@@ -1,0 +1,216 @@
+{
+  "project": {
+    "name": "Technical Artist Portfolio Website",
+    "type": "Frontend Application",
+    "description": "Professional portfolio website for technical artist showcasing game development work, tools, and technical expertise"
+  },
+  "pages": {
+    "home": {
+      "route": "/",
+      "title": "Home/Landing Page",
+      "functionality": "Hero section with animated elements, featured work showcase, and compelling introduction"
+    },
+    "portfolio": {
+      "route": "/portfolio",
+      "title": "Portfolio/Selected Works",
+      "functionality": "Grid-based project gallery with filtering by category (Shaders, Tools, VFX, etc.)"
+    },
+    "project_detail": {
+      "route": "/project/:id",
+      "title": "Project Detail Pages",
+      "functionality": "Individual project showcases with technical breakdowns, process documentation, and interactive demos"
+    },
+    "about": {
+      "route": "/about",
+      "title": "About Me",
+      "functionality": "Personal story, technical skills, career timeline, and professional philosophy"
+    },
+    "blog": {
+      "route": "/blog",
+      "title": "Technical Blog",
+      "functionality": "Articles about tools, techniques, and industry insights (optional but recommended)"
+    },
+    "contact": {
+      "route": "/contact",
+      "title": "Contact",
+      "functionality": "Contact form, social links, and collaboration opportunities"
+    }
+  },
+  "user_roles": {
+    "public_visitors": {
+      "permissions": [
+        "view_all_content",
+        "download_demo_reels",
+        "submit_contact_form"
+      ]
+    },
+    "admin": {
+      "permissions": [
+        "update_portfolio_content",
+        "manage_blog_posts",
+        "view_contact_submissions",
+        "access_cms_interface"
+      ]
+    }
+  },
+  "shared_components": {
+    "navigation": {
+      "type": "top_navigation",
+      "features": [
+        "smooth_scroll_to_section",
+        "mobile_hamburger_menu",
+        "active_state_indicators"
+      ]
+    },
+    "header": {
+      "elements": [
+        "logo_name",
+        "main_navigation",
+        "theme_toggle"
+      ],
+      "style": "minimal_clean"
+    },
+    "footer": {
+      "elements": [
+        "social_media_links",
+        "copyright",
+        "quick_contact_info"
+      ]
+    },
+    "project_cards": {
+      "features": [
+        "hover_effects",
+        "thumbnails",
+        "quick_project_info",
+        "reusable_component"
+      ]
+    },
+    "skill_tags": {
+      "type": "interactive_tags",
+      "categories": [
+        "technologies",
+        "tools",
+        "specializations"
+      ]
+    },
+    "loading_animations": {
+      "style": "custom_technical_artistry_themed"
+    }
+  },
+  "modals_popups": {
+    "image_video_gallery": {
+      "type": "lightbox",
+      "purpose": "showcasing_high_resolution_work_and_demos"
+    },
+    "project_quick_preview": {
+      "trigger": "hover_or_click",
+      "content": "project_highlights_without_full_navigation"
+    },
+    "contact_form_modal": {
+      "type": "streamlined_contact_interface"
+    },
+    "resume_download_prompt": {
+      "purpose": "quick_access_to_downloadable_portfolio_materials"
+    }
+  },
+  "technical_requirements": {
+    "css_framework": "Tailwind CSS",
+    "styling_approach": "custom_design_system_with_colors_and_animations",
+    "architecture": {
+      "component_reusability": true,
+      "modular_project_showcase_components": true,
+      "url_based_routing": true,
+      "smooth_transitions": true
+    },
+    "data_management": {
+      "hooks_and_services": "portfolio_data_management",
+      "mock_cms": true,
+      "data_structure": [
+        "project_ids",
+        "categories",
+        "tech_stacks",
+        "media_assets"
+      ]
+    },
+    "functionality": "fully_functional_end_to_end",
+    "responsive_design": true,
+    "interactive_elements": [
+      "smooth_scrolling",
+      "parallax_effects",
+      "technical_skill_demonstrations"
+    ]
+  },
+  "additional_considerations": {
+    "performance": {
+      "lazy_loading": [
+        "images",
+        "videos"
+      ],
+      "optimized_asset_delivery": true
+    },
+    "seo": {
+      "meta_tags": true,
+      "structured_data": true,
+      "discoverability_optimization": true
+    },
+    "accessibility": {
+      "wcag_compliant": true,
+      "proper_contrast_ratios": true,
+      "keyboard_navigation": true
+    },
+    "mobile_optimization": {
+      "mobile_first_design": true,
+      "cross_device_compatibility": true
+    },
+    "integrations": {
+      "headless_cms_ready": true,
+      "blog_platform_ready": true,
+      "google_analytics": true
+    },
+    "social_features": {
+      "open_graph_tags": true,
+      "social_media_optimization": true,
+      "project_sharing": true
+    }
+  },
+  "design_inspiration": {
+    "source": "Timothy Ogunpide Portfolio",
+    "key_elements": [
+      "clean_typography_hierarchy",
+      "bold_impactful_headings",
+      "generous_white_space",
+      "minimalist_aesthetic",
+      "subtle_color_accents",
+      "professional_imagery_integration",
+      "grid_based_layouts",
+      "asymmetrical_elements",
+      "smooth_hover_states",
+      "seamless_transitions",
+      "mobile_responsive_patterns"
+    ],
+    "color_palette": {
+      "primary": "clean_whites_and_grays",
+      "accent": "yellow_orange_inspired",
+      "text": "high_contrast_typography"
+    }
+  },
+  "content_structure": {
+    "project_categories": [
+      "Shaders",
+      "Technical Tools",
+      "VFX Systems",
+      "Pipeline Tools",
+      "UI/UX Systems",
+      "Procedural Generation",
+      "Performance Optimization"
+    ],
+    "skill_categories": [
+      "Programming Languages",
+      "Game Engines",
+      "3D Software",
+      "Version Control",
+      "Technical Art Tools",
+      "Shader Languages"
+    ]
+  }
+}

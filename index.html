@@ -1,155 +1,827 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="img/favicon.png" />
-  <title>HOME</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Technical Artist Portfolio | Creative Technical Solutions</title>
+  <meta name="description" content="Professional technical artist portfolio showcasing game development work, tools, and technical expertise">
+  <meta property="og:title" content="Technical Artist Portfolio">
+  <meta property="og:description" content="Professional technical artist portfolio showcasing game development work, tools, and technical expertise">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+              900: '#7c2d12'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-pattern {
+      background-image: radial-gradient(circle at 1px 1px, rgba(249, 115, 22, 0.15) 1px, transparent 0);
+      background-size: 20px 20px;
+    }
+    .nav-blur {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    .skill-tag:hover {
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 
-<body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="header__container">
-        <a href="index.html" class="header__logo logo">LOGO</a>
-        <div class="header__navigation">
-          <div class="header__menu menu">
-            <nav class="menu__body">
-              <nav class="menu__body">
-                <ul class="menu__list">
-                  <li class="menu__item"><a href="index.html" class="menu__link">Home</a></li>
-                  <li class="menu__item"><a href="about.html" class="menu__link">About</a></li>
-                  <li class="menu__item"><a href="services.html" class="menu__link">Services</a></li>
-                  <li class="menu__item"><a href="contact.html" class="menu__link">Contact</a></li>
-                </ul>
-                <a href="#" class="actions-header__button">CTA Button</a>
-              </nav>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="#home" class="text-2xl font-bold gradient-text">TechArtist</a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="#home" class="nav-link text-gray-700 hover:text-accent-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+            <a href="#portfolio" class="nav-link text-gray-700 hover:text-accent-600 px-3 py-2 text-sm font-medium transition-colors">Portfolio</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-accent-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+            <a href="#blog" class="nav-link text-gray-700 hover:text-accent-600 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-accent-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+            <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+              <i class="fas fa-sun text-gray-700"></i>
+            </button>
           </div>
-          <div class="header__actions actions-header">
-            <button type="button" class="menu__icon icon-menu"><span></span></button>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="p-2">
+            <i class="fas fa-bars text-gray-700"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden hidden nav-blur bg-white/90 border-t">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-accent-600">Home</a>
+        <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-accent-600">Portfolio</a>
+        <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-accent-600">About</a>
+        <a href="#blog" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-accent-600">Blog</a>
+        <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-accent-600">Contact</a>
+      </div>
+    </div>
+              </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center hero-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="space-y-6 animate-fade-in">
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight">
+          Technical
+          <span class="gradient-text">Artist</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+          Bridging the gap between art and technology with innovative tools, 
+          stunning visuals, and technical excellence in game development.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+          <a href="#portfolio" class="bg-accent-600 hover:bg-accent-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+            View My Work
+          </a>
+          <a href="#contact" class="border-2 border-accent-600 text-accent-600 hover:bg-accent-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-300">
+            Get In Touch
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <i class="fas fa-chevron-down text-accent-600 text-2xl"></i>
+    </div>
+  </section>
+
+  <!-- Featured Work Section -->
+  <section id="featured-work" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Featured Work</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Showcase of recent projects demonstrating technical artistry and innovation
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card 1 -->
+        <div class="project-card group cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+            <div class="aspect-video bg-gradient-to-br from-accent-400 to-accent-600 relative overflow-hidden">
+              <div class="project-image absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center">
+                <i class="fas fa-code text-white text-4xl"></i>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-accent-100 text-accent-800 px-3 py-1 rounded-full text-sm font-medium">Shaders</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Advanced Shader System</h3>
+              <p class="text-gray-600 mb-4">Custom HLSL shaders for stylized rendering with real-time parameter control.</p>
+              <a href="#" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Project
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card 2 -->
+        <div class="project-card group cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+            <div class="aspect-video bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden">
+              <div class="project-image absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center">
+                <i class="fas fa-tools text-white text-4xl"></i>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Tools</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Pipeline Automation</h3>
+              <p class="text-gray-600 mb-4">Python tools for streamlining asset pipeline and workflow optimization.</p>
+              <a href="#" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Project
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card 3 -->
+        <div class="project-card group cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+            <div class="aspect-video bg-gradient-to-br from-green-400 to-green-600 relative overflow-hidden">
+              <div class="project-image absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center">
+                <i class="fas fa-magic text-white text-4xl"></i>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">VFX</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Procedural VFX</h3>
+              <p class="text-gray-600 mb-4">Real-time particle systems and procedural effects for dynamic gameplay.</p>
+              <a href="#" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Project
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </header>
-    <main class="page">
-      <section class="page__main main">
-        <div class="main__container">
-          <h3 class="main__caption">Add a Subheading</h3>
-          <h1 class="main__title">H1 Heading</h1>
-          <div class="main__text">
-            Create a compelling and attention-grabbing short description that sparks curiosity and leaves readers
-            intrigued.
+      
+      <div class="text-center mt-12">
+        <a href="#portfolio" class="bg-accent-600 hover:bg-accent-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+          View All Projects
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Technical Expertise</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Specialized skills spanning programming, 3D art, and technical innovation
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-code text-accent-600 text-2xl"></i>
           </div>
-          <a href="#" class="main__button">CTA Button</a>
+          <h3 class="text-xl font-semibold mb-2">Programming</h3>
+          <p class="text-gray-600">C#, Python, HLSL, JavaScript</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-gamepad text-accent-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Game Engines</h3>
+          <p class="text-gray-600">Unity, Unreal Engine, Godot</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-cube text-accent-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">3D Software</h3>
+          <p class="text-gray-600">Maya, Blender, Houdini, Substance</p>
+        </div>
+      </div>
+      
+      <!-- Skill Tags -->
+      <div class="flex flex-wrap justify-center gap-3">
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">Unity</span>
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">HLSL</span>
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">Python</span>
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">Maya</span>
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">Houdini</span>
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">Substance</span>
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">Blender</span>
+        <span class="skill-tag bg-gray-100 hover:bg-accent-100 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer">Git</span>
+      </div>
         </div>
       </section>
-      <section class="page__about about">
-        <div class="about__container">
-          <div class="about__image"><img src="img/home/placeholder_about.jpg" alt="img" /></div>
-          <div class="about__content">
-            <h2 class="about__title title">About Heading</h2>
-            <div class="about__text">
-              <p>
-                About Text: In this section, you can provide a detailed paragraph that delves into the history,
-                values, and mission of your web development business. Highlight expertise, unique approach of your
-                team, and the commitment that sets you apart.
-              </p>
-              <p>
-                Emphasize your passion for creating exceptional web solutions and convey your dedication to delivering
-                remarkable results for clients.
-              </p>
-            </div>
-            <a href="#" class="about__button button">CTA Button</a>
-          </div>
-        </div>
-      </section>
-      <section class="page__services services">
-        <div class="services__container">
-          <h2 class="services__title title">Services Heading</h2>
-          <div class="services__row">
-            <div class="services__column">
-              <div class="services__item item-services">
-                <a class="item-services__top" href="#">
-                  <div class="item-services__image">
-                    <img src="img/home/services_placeholder.jpg" alt="img" />
-                  </div>
-                  <h3 class="item-services__title">First Service</h3>
-                </a>
-                <div class="item-services__text">
-                  Craft a brief description outlining the essence of your first service.
-                </div>
-                <a href="#" class="item-services__button button">CTA Button</a>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Portfolio</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Selected works showcasing technical artistry across various categories
+        </p>
+      </div>
+      
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button class="filter-btn active bg-accent-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-300" data-filter="all">All</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-accent-100 px-6 py-2 rounded-full font-medium transition-all duration-300" data-filter="shaders">Shaders</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-accent-100 px-6 py-2 rounded-full font-medium transition-all duration-300" data-filter="tools">Tools</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-accent-100 px-6 py-2 rounded-full font-medium transition-all duration-300" data-filter="vfx">VFX</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-accent-100 px-6 py-2 rounded-full font-medium transition-all duration-300" data-filter="procedural">Procedural</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 hover:bg-accent-100 px-6 py-2 rounded-full font-medium transition-all duration-300" data-filter="pipeline">Pipeline</button>
+      </div>
+      
+      <!-- Portfolio Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+        <!-- Shader Project -->
+        <div class="portfolio-item" data-category="shaders">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
+            <div class="aspect-video bg-gradient-to-br from-purple-400 to-purple-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center hover:scale-105">
+                <i class="fas fa-magic text-white text-4xl"></i>
               </div>
             </div>
-            <div class="services__column">
-              <div class="services__item item-services">
-                <a class="item-services__top" href="#">
-                  <div class="item-services__image">
-                    <img src="img/home/services_placeholder.jpg" alt="img" />
-                  </div>
-                  <h3 class="item-services__title">Second Service</h3>
-                </a>
-                <div class="item-services__text">
-                  Write a concise statement highlighting the core features of your second service.
-                </div>
-                <a href="#" class="item-services__button button">CTA Button</a>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Shaders</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Stylized Water Shader</h3>
+              <p class="text-gray-600 mb-4">Custom water shader with foam, caustics, and interactive ripple effects.</p>
+              <a href="project-detail.html?id=water-shader" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Details
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools Project -->
+        <div class="portfolio-item" data-category="tools">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
+            <div class="aspect-video bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center hover:scale-105">
+                <i class="fas fa-cogs text-white text-4xl"></i>
               </div>
             </div>
-            <div class="services__column">
-              <div class="services__item item-services">
-                <a class="item-services__top" href="#">
-                  <div class="item-services__image">
-                    <img src="img/home/services_placeholder.jpg" alt="img" />
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Tools</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Asset Validation Tool</h3>
+              <p class="text-gray-600 mb-4">Python tool for automated asset validation and optimization pipeline.</p>
+              <a href="project-detail.html?id=validation-tool" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Details
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- VFX Project -->
+        <div class="portfolio-item" data-category="vfx">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
+            <div class="aspect-video bg-gradient-to-br from-red-400 to-red-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center hover:scale-105">
+                <i class="fas fa-fire text-white text-4xl"></i>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">VFX</span>
                   </div>
-                  <h3 class="item-services__title">First Service</h3>
-                </a>
-                <div class="item-services__text">
-                  Provide a succinct overview key offerings of your third service.
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Particle System Framework</h3>
+              <p class="text-gray-600 mb-4">Modular VFX system with GPU-based particle simulation and pooling.</p>
+              <a href="project-detail.html?id=particle-system" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Details
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
                 </div>
-                <a href="#" class="item-services__button button">CTA Button</a>
+
+        <!-- Procedural Project -->
+        <div class="portfolio-item" data-category="procedural">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
+            <div class="aspect-video bg-gradient-to-br from-green-400 to-green-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center hover:scale-105">
+                <i class="fas fa-mountain text-white text-4xl"></i>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Procedural</span>
+                  </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Terrain Generation System</h3>
+              <p class="text-gray-600 mb-4">Houdini-based procedural terrain with automatic texture blending.</p>
+              <a href="project-detail.html?id=terrain-gen" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Details
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+                </div>
+
+        <!-- Pipeline Project -->
+        <div class="portfolio-item" data-category="pipeline">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
+            <div class="aspect-video bg-gradient-to-br from-yellow-400 to-yellow-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center hover:scale-105">
+                <i class="fas fa-sitemap text-white text-4xl"></i>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Pipeline</span>
+                  </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Build Pipeline Optimizer</h3>
+              <p class="text-gray-600 mb-4">Automated build optimization with performance profiling integration.</p>
+              <a href="project-detail.html?id=build-optimizer" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Details
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+                </div>
+
+        <!-- Additional Shader Project -->
+        <div class="portfolio-item" data-category="shaders">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
+            <div class="aspect-video bg-gradient-to-br from-indigo-400 to-indigo-600 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gray-800 transition-transform duration-300 flex items-center justify-center hover:scale-105">
+                <i class="fas fa-eye text-white text-4xl"></i>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">Shaders</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Post-Processing Suite</h3>
+              <p class="text-gray-600 mb-4">Custom post-processing effects including bloom, DOF, and color grading.</p>
+              <a href="project-detail.html?id=post-processing" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+                View Details
+                <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="page__testimonial testimonial">
-        <div class="testimonial__container">
-          <h3 class="testiomonial__caption">Testimonial</h3>
-          <h2 class="testimonial__title title">
-            A comprehensive testimonial will be thoughtfully placed here, complete with all the compelling details and
-            thoughtful insights.
-          </h2>
-          <div class="testimonial__item item-testimonial">
-            <div class="item-testimonial__image">
-              <img src="img/home/user.png" alt="user" />
+
+  <!-- About Section -->
+  <section id="about" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About Me</h2>
+          <p class="text-xl text-gray-600 mb-6">
+            I'm a passionate technical artist with over 5 years of experience bridging the gap between 
+            creative vision and technical implementation in game development.
+          </p>
+          <p class="text-gray-600 mb-8">
+            My expertise spans shader development, pipeline optimization, and tool creation. 
+            I love solving complex technical challenges while maintaining artistic quality and 
+            ensuring smooth workflows for development teams.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-accent-600 mr-3"></i>
+              <span>5+ years in game development</span>
             </div>
-            <h4 class="item-testimonial__title">Full Name</h4>
-            <div class="item-testimonial__caption">Job Title</div>
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-accent-600 mr-3"></i>
+              <span>Specialized in real-time rendering</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-check-circle text-accent-600 mr-3"></i>
+              <span>Expert in pipeline automation</span>
+            </div>
+          </div>
+          <a href="about.html" class="inline-block mt-8 bg-accent-600 hover:bg-accent-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+            Learn More About Me
+          </a>
+        </div>
+        <div class="relative">
+          <div class="aspect-square bg-gradient-to-br from-accent-400 to-accent-600 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-user text-white text-8xl"></i>
+          </div>
+          <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center">
+            <i class="fas fa-code text-accent-600 text-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Technical Blog</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Insights, tutorials, and industry thoughts on technical art and game development
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Blog Post 1 -->
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center">
+            <i class="fas fa-code-branch text-white text-4xl"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-accent-100 text-accent-800 px-3 py-1 rounded-full text-sm font-medium">Tutorial</span>
+              <span class="text-gray-500 text-sm">Dec 15, 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Optimizing Shader Performance</h3>
+            <p class="text-gray-600 mb-4">Best practices for writing efficient shaders without sacrificing visual quality.</p>
+            <a href="blog.html#shader-optimization" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+              Read More
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 2 -->
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+            <i class="fas fa-tools text-white text-4xl"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Tools</span>
+              <span class="text-gray-500 text-sm">Dec 10, 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Python for Game Pipelines</h3>
+            <p class="text-gray-600 mb-4">Building robust automation tools to streamline your development workflow.</p>
+            <a href="blog.html#python-pipelines" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+              Read More
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 3 -->
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-video bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+            <i class="fas fa-lightbulb text-white text-4xl"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Insights</span>
+              <span class="text-gray-500 text-sm">Dec 5, 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Future of Technical Art</h3>
+            <p class="text-gray-600 mb-4">Exploring emerging trends and technologies shaping the industry.</p>
+            <a href="blog.html#future-tech-art" class="text-accent-600 hover:text-accent-700 font-medium inline-flex items-center">
+              Read More
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="blog.html" class="bg-accent-600 hover:bg-accent-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+          View All Posts
+        </a>
           </div>
         </div>
       </section>
-      <section class="page__outro outro outro_home">
-        <div class="outro__container">
-          <h2 class="outro__title title">Talk To Us Heading</h2>
-          <div class="outro__text">
-            Text: In this section, you can compose a friendly and informative paragraph that encourages visitors to
-            engage with your business.
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Ready to collaborate or have questions about my work? Let's connect!
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-16">
+        <!-- Contact Form -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-2xl font-semibold mb-6">Send a Message</h3>
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+              <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500">
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+              <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500">
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-accent-600 hover:bg-accent-700 text-white py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+              Send Message
+            </button>
+          </form>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+            <div class="space-y-6">
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-envelope text-accent-600"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Email</p>
+                  <p class="font-semibold">hello@techartist.dev</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-map-marker-alt text-accent-600"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Location</p>
+                  <p class="font-semibold">Remote / Available Worldwide</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-clock text-accent-600"></i>
+                </div>
+                <div>
+                  <p class="text-gray-600">Response Time</p>
+                  <p class="font-semibold">Within 24 hours</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <a href="#" class="outro__button button">CTA Button</a>
+          
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Download Portfolio</h4>
+            <div class="space-y-3">
+              <a href="#" class="block bg-gray-100 hover:bg-gray-200 px-6 py-3 rounded-lg transition-colors">
+                <i class="fas fa-download mr-2"></i>
+                Resume / CV (PDF)
+              </a>
+              <a href="#" class="block bg-gray-100 hover:bg-gray-200 px-6 py-3 rounded-lg transition-colors">
+                <i class="fas fa-download mr-2"></i>
+                Portfolio Reel (MP4)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
       </section>
-    </main>
-    <footer class="footer">
-      <div class="footer__container">
-        <a href="#" class="footer__policy">Privacy Policy – Terms & Conditions</a>
-        <a href="" class="footer__logo logo">LOGO</a>
-        <div class="footer__copyright">Copyright © 2025 LOGO – All Rights Reserved</div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <h3 class="text-2xl font-bold gradient-text mb-4">TechArtist</h3>
+          <p class="text-gray-400">
+            Creating innovative technical solutions for interactive experiences.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <div class="space-y-2">
+            <a href="#portfolio" class="block text-gray-400 hover:text-white transition-colors">Portfolio</a>
+            <a href="#about" class="block text-gray-400 hover:text-white transition-colors">About</a>
+            <a href="#blog" class="block text-gray-400 hover:text-white transition-colors">Blog</a>
+            <a href="#contact" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-artstation text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 Technical Artist Portfolio. All rights reserved.</p>
+      </div>
       </div>
     </footer>
-  </div>
-  <script src="js/script.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    // Navigation scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('nav-blur', 'bg-white/90', 'shadow-lg');
+      } else {
+        navbar.classList.remove('nav-blur', 'bg-white/90', 'shadow-lg');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const icon = themeToggle.querySelector('i');
+      icon.classList.toggle('fa-sun');
+      icon.classList.toggle('fa-moon');
+    });
+
+    // Add animation classes on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections for animations
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Portfolio filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+          
+          // Update active button
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-accent-600', 'text-white');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+          });
+          this.classList.add('active', 'bg-accent-600', 'text-white');
+          this.classList.remove('bg-gray-200', 'text-gray-700');
+          
+          // Filter portfolio items
+          portfolioItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = 'block';
+              item.classList.add('animate-fade-in');
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Contact form handling
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+          
+          // Simulate form submission
+          const submitButton = this.querySelector('button[type="submit"]');
+          const originalText = submitButton.textContent;
+          
+          submitButton.textContent = 'Sending...';
+          submitButton.disabled = true;
+          
+          // Simulate API call
+          setTimeout(() => {
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+          }, 2000);
+        });
+      }
+    });
+  </script>
+
+  <style>
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fade-in 0.6s ease-out forwards;
+    }
+  </style>
 </body>
 
 </html>

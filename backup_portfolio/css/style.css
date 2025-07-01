@@ -110,6 +110,59 @@ body {
   transition: all 0.3s;
   position: relative;
   z-index: 2;
+  background: none;
+  color: #303a4d;
+  cursor: pointer;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  top: 100%;
+  right: 0;
+  border: 1px solid #e1e4eb;
+}
+
+.dropdown-content a {
+  color: #303a4d;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f3f6;
+}
+
+.dropdown-content a:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown-content a:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .actions-header__button {
+  background-color: #303a4d;
+  color: #ffffff;
 }
 
 /* ****************PAGES**************** */
@@ -120,8 +173,16 @@ body {
 /* *****************HOME**************** */
 
 .main {
-  background: url("../img/home/background_placeholder.png") center / cover no-repeat;
+  background: url("../img/about/frontpage_background.png") center / cover no-repeat;
   min-height: 100vh;
+}
+
+/* Override for portfolio pages */
+.page__main.main.main_portfolio,
+.main.main_portfolio {
+  min-height: 450px !important;
+  max-height: 450px !important;
+  height: 450px !important;
 }
 
 .main__container {
@@ -131,18 +192,53 @@ body {
   align-items: center;
   text-align: center;
   padding-top: 19.188rem;
+  position: relative;
+}
+
+.main__container::before {
+  content: '';
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 750px;
+  min-height: 250px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.main__container > * {
+  position: relative;
+  z-index: 2;
 }
 
 .main__caption {
   text-transform: uppercase;
   margin-bottom: 1rem;
   font-weight: 500;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+               -1px -1px 2px rgba(0, 0, 0, 0.6),
+               1px -1px 2px rgba(0, 0, 0, 0.6),
+               -1px 1px 2px rgba(0, 0, 0, 0.6),
+               1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .main__title {
   font-size: 5.5rem;
   font-weight: 600;
   margin-bottom: 2rem;
+  color: #ffffff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+               -2px -2px 4px rgba(0, 0, 0, 0.6),
+               2px -2px 4px rgba(0, 0, 0, 0.6),
+               -2px 2px 4px rgba(0, 0, 0, 0.6),
+               2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .main__text {
@@ -150,6 +246,12 @@ body {
   max-width: 33.375rem;
   line-height: 150%;
   letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+               -1px -1px 2px rgba(0, 0, 0, 0.6),
+               1px -1px 2px rgba(0, 0, 0, 0.6),
+               -1px 1px 2px rgba(0, 0, 0, 0.6),
+               1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .main__button {
@@ -172,7 +274,7 @@ body {
 /* ************ABOUT**************** */
 
 .main_about {
-  background: url("../img/about/background_placeholder.png") center / cover no-repeat;
+  background: url("../img/about/frontpage_background.png") center / cover no-repeat;
 }
 
 .about__container {
@@ -216,10 +318,18 @@ body {
   background: url("../img/about/hero_placeholder.jpg") center / cover no-repeat;
 }
 
-/* **************SERVICES**************** */
+/* **************PORTFOLIO**************** */
 
-.main_services {
-  background: url("../img/services/background_placeholder.png") center / cover no-repeat;
+.main.main_portfolio.main_pages {
+  background: url("../img/about/frontpage_background.png") center / cover no-repeat;
+  min-height: 450px !important;
+  max-height: 450px !important;
+  height: 450px !important;
+}
+
+.main_portfolio {
+  background: url("../img/about/frontpage_background.png") center / cover no-repeat;
+  min-height: 450px !important;
 }
 
 .services {
@@ -282,7 +392,7 @@ body {
   color: #303a4d;
 }
 
-.outro_services {
+.outro_portfolio {
   background: url("../img/services/hero_placeholder.jpg") center / cover no-repeat;
 }
 
@@ -396,14 +506,58 @@ body {
 /* ****************ABOUT PAGE**************** */
 .main__text_pages {
   max-width: 37.5rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+               -1px -1px 2px rgba(0, 0, 0, 0.6),
+               1px -1px 2px rgba(0, 0, 0, 0.6),
+               -1px 1px 2px rgba(0, 0, 0, 0.6),
+               1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .main__container_pages {
   padding-top: 300px;
+  position: relative;
+}
+
+/* Adjust padding for portfolio pages to align text with blur */
+.main_portfolio .main__container_pages {
+  padding-top: 130px;
+}
+
+/* Move just the text elements without affecting blur */
+.main_portfolio .main__title {
+  transform: translateY(60px);
+}
+
+.main_portfolio .main__text_pages {
+  transform: translateY(40px);
+}
+
+.main__container_pages::before {
+  content: '';
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1200px;
+  min-width: 600px;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.main__container_pages > * {
+  position: relative;
+  z-index: 2;
 }
 
 .main_pages {
-  min-height: 676px !important;
+  min-height: 450px !important;
 }
 
 /* ****************SERVICES PAGE**************** */
@@ -455,10 +609,124 @@ body {
   border-radius: 16px;
 }
 
+/* ****************PORTFOLIO GRID**************** */
+.portfolio-grid {
+  background-color: #e1e4eb;
+}
+
+.portfolio-grid__container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.portfolio-grid__row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-grid__item {
+  display: flex;
+}
+
+.portfolio-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid rgba(48, 58, 77, 0.08);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-card__image {
+  height: 280px;
+  overflow: hidden;
+}
+
+.portfolio-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-card__image img {
+  transform: scale(1.05);
+}
+
+.portfolio-card__content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.portfolio-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #303a4d;
+}
+
+.portfolio-card__text {
+  font-size: 1rem;
+  line-height: 150%;
+  color: #5a6b7d;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.portfolio-card__button {
+  align-self: flex-start;
+  background-color: #303a4d;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.portfolio-card__button:hover {
+  background-color: #2a3347;
+}
+
+/* Responsive Design for Portfolio Grid */
+@media (max-width: 768px) {
+  .portfolio-grid__row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .portfolio-grid__container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .portfolio-card__content {
+    padding: 16px;
+  }
+  
+  .portfolio-card__image {
+    height: 240px;
+  }
+}
+
 /* ****************CONTACT PAGE****************/
 
 .main_contact {
-  background: url("../img/contact/background_placeholder.png") center / cover no-repeat;
+  background: url("../img/about/frontpage_background.png") center / cover no-repeat;
 }
 
 .contact__container {
@@ -1287,6 +1555,13 @@ iframe {
 
   .main__container_pages {
     padding-top: 290px;
+  }
+
+  /* Mobile responsive blur backdrop */
+  .main__container_pages::before {
+    width: 95%;
+    max-width: 500px;
+    min-width: 350px;
   }
 
   .main__title {

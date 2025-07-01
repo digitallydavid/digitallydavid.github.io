@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <title>Procedural Environment - Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <div class="header__container">
+        <a href="index.html" class="header__logo logo">LOGO</a>
+        <div class="header__navigation">
+          <div class="header__menu menu">
+            <nav class="menu__body">
+              <nav class="menu__body">
+                <ul class="menu__list">
+                  <li class="menu__item"><a href="index.html" class="menu__link">Home</a></li>
+                  <li class="menu__item"><a href="about.html" class="menu__link">About</a></li>
+                  <li class="menu__item"><a href="portfolio.html" class="menu__link">Portfolio</a></li>
+                  <li class="menu__item"><a href="contact.html" class="menu__link">Contact</a></li>
+                </ul>
+                <div class="dropdown">
+                  <button class="actions-header__button dropdown-toggle">Projects ▼</button>
+                  <div class="dropdown-content">
+                    <a href="project1.html">Procedural Environment</a>
+                    <a href="project2.html">Character Pipeline</a>
+                    <a href="project3.html">Shader Development</a>
+                    <a href="project4.html">Tool Creation</a>
+                  </div>
+                </div>
+              </nav>
+          </div>
+          <div class="header__actions actions-header">
+            <button type="button" class="menu__icon icon-menu"><span></span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="page">
+      <section class="page__main main main_portfolio main_pages">
+        <div class="main__container main__container_pages">
+          <h1 class="main__title">Procedural Environment</h1>
+          <div class="main__text main__text_pages">
+            Houdini-based terrain generation and vegetation systems for game development
+          </div>
+        </div>
+      </section>
+      <section class="page__about about">
+        <div class="about__container">
+          <div class="about__image"><img src="img/services/services_page_placeholder.jpg" alt="Project Overview" /></div>
+          <div class="about__content">
+            <h2 class="about__title title">Project Overview</h2>
+            <div class="about__text">
+              <p>
+                This project demonstrates a comprehensive procedural environment generation system built entirely in Houdini. 
+                The system generates realistic terrain, automatically scatters vegetation, and creates optimized LOD chains 
+                for seamless integration into modern game engines.
+              </p>
+              <p>
+                Key features include heightfield-based terrain generation, rule-based vegetation placement, 
+                automated UV mapping, and performance-optimized mesh output suitable for real-time rendering.
+              </p>
+            </div>
+            <a href="portfolio.html" class="about__button button">Back to Portfolio</a>
+          </div>
+        </div>
+      </section>
+      <section class="page__services services-page">
+        <div class="services-page__container">
+          <div class="services-page__item">
+            <div class="services-page__column">
+              <div class="services-page__content">
+                <h2 class="services-page__title title">Technical Specifications</h2>
+                <div class="services-page__text">
+                  <p><strong>Software:</strong> Houdini 19.5, Unreal Engine 5, Substance Designer</p>
+                  <p><strong>Techniques:</strong> Heightfield generation, VEX scripting, HDAs, LOD optimization</p>
+                  <p><strong>Output:</strong> Game-ready meshes, optimized materials, documentation</p>
+                </div>
+              </div>
+              <div class="services-page__img">
+                <img src="img/services/services_page_placeholder.jpg" alt="Technical Specs" />
+              </div>
+            </div>
+          </div>
+          <div class="services-page__item">
+            <div class="services-page__column">
+              <div class="services-page__img">
+                <img src="img/services/services_page_placeholder.jpg" alt="Workflow" />
+              </div>
+              <div class="services-page__content">
+                <h2 class="services-page__title title">Workflow & Pipeline</h2>
+                <div class="services-page__text">
+                  <p>
+                    The pipeline starts with heightfield noise generation, followed by erosion simulation 
+                    and material layering. Vegetation is scattered using custom VEX rules that consider 
+                    slope, altitude, and material properties.
+                  </p>
+                  <p>
+                    Custom HDAs package the entire workflow for artist-friendly use, with exposed parameters 
+                    for easy iteration and variation generation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="page__outro outro outro_portfolio">
+        <div class="outro__container">
+          <h2 class="outro__title title">Interested in This Project?</h2>
+          <div class="outro__text">
+            Want to learn more about procedural environment generation or discuss similar projects? 
+            Let's connect and explore how these techniques can benefit your development pipeline.
+          </div>
+          <a href="contact.html" class="outro__button button">Get In Touch</a>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <a href="#" class="footer__policy">Privacy Policy – Terms & Conditions</a>
+        <a href="" class="footer__logo logo">LOGO</a>
+        <div class="footer__copyright">Copyright © 2025 LOGO – All Rights Reserved</div>
+      </div>
+    </footer>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
+</html> 
