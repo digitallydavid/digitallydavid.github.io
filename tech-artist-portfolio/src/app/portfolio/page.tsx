@@ -36,36 +36,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-              Portfolio
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-              Selected works showcasing technical artistry across game development, 
-              pipeline optimization, and real-time rendering solutions.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <span className="bg-accent-100 dark:bg-accent-900/20 text-accent-800 dark:text-accent-200 px-4 py-2 rounded-full text-sm">
-                🎯 {projects.length} Projects
-              </span>
-              <span className="bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 px-4 py-2 rounded-full text-sm">
-                ⚡ Production Ready
-              </span>
-              <span className="bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm">
-                🔧 Open Source
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Portfolio Content */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,11 +127,6 @@ export default function Portfolio() {
                       {project.subtitle}
                     </p>
                     
-                    {/* Description */}
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 text-sm">
-                      {project.description}
-                    </p>
-
                     {/* Project Info */}
                     <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
                       <div className="flex items-center">
@@ -257,100 +222,6 @@ export default function Portfolio() {
           )}
         </div>
       </section>
-
-      {/* Featured Projects Section */}
-      {activeCategory === 'All' && (
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Featured Work
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Highlighted projects demonstrating advanced technical artistry and innovation
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-12">
-              {projects.filter(p => p.featured).slice(0, 2).map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="flex items-center mb-4">
-                    <span className="text-4xl mr-4">{project.images[0]}</span>
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {project.title}
-                      </h3>
-                      <p className="text-accent-600 dark:text-accent-400 font-medium">
-                        {project.subtitle}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    {project.longDescription.slice(0, 200)}...
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.highlights.slice(0, 2).map((highlight, idx) => (
-                      <span 
-                        key={idx}
-                        className="bg-accent-100 dark:bg-accent-900/20 text-accent-800 dark:text-accent-200 px-3 py-1 rounded-full text-sm"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href={`/project/${project.id}`}
-                      className="bg-accent-600 hover:bg-accent-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-flex items-center"
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                    
-                    <div className="flex space-x-3">
-                      {project.links.demo && (
-                        <a
-                          href={project.links.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-accent-600 transition-colors"
-                        >
-                          <ExternalLink className="h-5 w-5" />
-                        </a>
-                      )}
-                      {project.links.github && (
-                        <a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-500 hover:text-accent-600 transition-colors"
-                        >
-                          <Github className="h-5 w-5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   );
 } 

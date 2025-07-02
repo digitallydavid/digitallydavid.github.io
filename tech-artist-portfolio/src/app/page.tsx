@@ -20,12 +20,10 @@ export default function Home() {
             className="space-y-6"
           >
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
-              Technical
-              <span className="gradient-text"> Artist</span>
+              Hi, I'm <span className="gradient-text text-accent-600">David</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Bridging the gap between art and technology with innovative tools, 
-              stunning visuals, and technical excellence in game development.
+              I'm a Tech Art Goblin, jack-of-all-trades, and practitioner of forbidden spells (game development)
             </p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
