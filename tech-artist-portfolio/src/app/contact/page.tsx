@@ -364,12 +364,10 @@ export default function Contact() {
                 </h3>
                 <div className="space-y-3">
                   <a
-                    href="/resume.pdf"
+                    href="/resume"
                     className="flex items-center text-accent-600 hover:text-accent-700 transition-colors"
-                    download
                   >
-                    <Globe className="h-5 w-5 mr-2" />
-                    Download Resume PDF
+                    View Resume
                   </a>
                 </div>
               </div>

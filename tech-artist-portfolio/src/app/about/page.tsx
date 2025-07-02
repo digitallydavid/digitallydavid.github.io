@@ -14,61 +14,50 @@ interface TimelineItem {
 
 const timeline: TimelineItem[] = [
   {
-    year: '2024',
-    title: 'Senior Technical Artist',
-    company: 'AAA Game Studio',
-    description: 'Leading technical art initiatives for next-gen open-world RPG. Implementing advanced shader systems and optimizing rendering pipelines for multiple platforms.',
-    skills: ['HLSL', 'Unity', 'Houdini', 'Python']
+    year: '2022 - Current',
+    title: 'Technical Artist',
+    company: 'Airship Syndicate',
+    description: 'Responsible for technical art initiatives including game performance optimization, tool design, and animation systems. Shipped Wayfinder (2023) and contributing to two unannounced titles.',
+    skills: ['Unreal Engine', 'C++', 'Python', 'Performance Optimization']
   },
   {
-    year: '2022',
-    title: 'Technical Artist',
-    company: 'Indie Game Studio',
-    description: 'Developed procedural art tools and automated asset pipelines. Created stylized shaders and VFX systems for mobile and PC platforms.',
-    skills: ['Maya', 'Substance', 'C#', 'Blender']
+    year: '2021',
+    title: '3D Character Artist',
+    company: '**KID A AMNESIA** (Arbitrarily Good Productions)',
+    description: 'Led character creation from sculpting/modeling to retopology, rigging, and in-engine implementation. Developed character behaviors and reactive animation systems.',
+    skills: ['Unreal Engine', 'Maya', 'Zbrush', 'Character Art', 'Animation Systems']
+  },
+  {
+    year: '2021',
+    title: '3D Artist',
+    company: 'Solar Ash (Heart Machine)',
+    description: 'Created environmental assets including Houdini-generated body piles, infected targets, and corpse props. Supported art team with modeling tasks to meet shipping deadlines.',
+    skills: ['Unreal Engine', 'Houdini', 'Maya', 'Environmental Art', 'Modeling']
   },
   {
     year: '2020',
-    title: 'Junior Technical Artist',
-    company: 'Digital Media Company',
-    description: 'Built custom tools for content creators and streamlined art production workflows. Focused on real-time rendering optimization.',
-    skills: ['Unity', 'Python', 'Git', 'Perforce']
+    title: '3D Character Artist',
+    company: 'We Are OFK (Teddy Dief Productions)',
+    description: 'Expanded game cast by adapting main character base meshes into unique supporting roles. Delivered final models and textures aligned with stylized aesthetic.',
+    skills: ['Character Art', 'Modeling', 'Texturing', 'Stylized Art']
   },
   {
-    year: '2019',
-    title: 'Computer Science Degree',
-    company: 'University',
-    description: 'Bachelor of Science in Computer Science with focus on Computer Graphics and Game Development. Graduated Summa Cum Laude.',
-    skills: ['C++', 'OpenGL', 'Mathematics', 'Algorithms']
+    year: '2020 - 2022',
+    title: '3D Character and Tech Artist',
+    company: 'Contractor (Various Studios)',
+    description: 'Worked with clients including Annapurna, Iridium Games, Giant Sparrow, and Arbitrarily Good Games on character art and technical art projects.',
+    skills: ['Character Art', 'Technical Art', 'Client Work', 'Multiple Studios']
+  },
+  {
+    year: '2015 - 2020',
+    title: 'Senior Compositor',
+    company: 'Various VFX Studios',
+    description: 'Worked at Ingenuity Studios, Fuse FX, and Barnstorm VFX on projects including The Orville, Taylor Swift, Maroon 5, American Horror Story, Grey\'s Anatomy, and 9-1-1.',
+    skills: ['Compositing', 'VFX', 'Nuke', 'Film & TV']
   }
 ];
 
-const skills = [
-  {
-    category: 'Programming Languages',
-    items: ['C#', 'Python', 'HLSL/GLSL', 'C++', 'JavaScript', 'MEL', 'VEX']
-  },
-  {
-    category: 'Game Engines',
-    items: ['Unity', 'Unreal Engine 4/5', 'Godot', 'Custom Engines']
-  },
-  {
-    category: '3D Software',
-    items: ['Maya', 'Blender', 'Houdini', '3ds Max', 'Cinema 4D']
-  },
-  {
-    category: 'Texturing & Materials',
-    items: ['Substance Suite', 'Photoshop', 'GIMP', 'Quixel', 'Mari']
-  },
-  {
-    category: 'Version Control',
-    items: ['Git', 'Perforce', 'SVN', 'Plastic SCM']
-  },
-  {
-    category: 'Specializations',
-    items: ['Real-time Rendering', 'Procedural Generation', 'Pipeline Development', 'Performance Optimization']
-  }
-];
+
 
 export default function About() {
   return (
@@ -86,42 +75,40 @@ export default function About() {
                 About Me
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-                I'm a passionate technical artist with over 5 years of experience bridging the gap between 
-                creative vision and technical implementation in game development.
+                I'm a versatile technical artist with a passion for tool, system, and feature design, 
+                currently working at Airship Syndicate on game performance optimization and animation systems.
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                My expertise spans shader development, pipeline optimization, and tool creation. 
-                I love solving complex technical challenges while maintaining artistic quality and 
-                ensuring smooth workflows for development teams.
+                My expertise spans character art, technical art, and visual effects, with experience 
+                ranging from game development to film compositing. I love solving complex problems 
+                and enhancing gameplay experiences through innovative technical solutions.
               </p>
               
               <div className="space-y-4 mb-8">
                 <div className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-accent-600 mr-3" />
-                  <span className="text-gray-700 dark:text-gray-300">5+ years in game development</span>
+                  <span className="text-gray-700 dark:text-gray-300">Current Technical Artist at Airship Syndicate</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-accent-600 mr-3" />
-                  <span className="text-gray-700 dark:text-gray-300">Specialized in real-time rendering</span>
+                  <span className="text-gray-700 dark:text-gray-300">Shipped Wayfinder (2023)</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-accent-600 mr-3" />
-                  <span className="text-gray-700 dark:text-gray-300">Expert in pipeline automation</span>
+                  <span className="text-gray-700 dark:text-gray-300">Expert in character art and technical art</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-accent-600 mr-3" />
-                  <span className="text-gray-700 dark:text-gray-300">Cross-platform optimization specialist</span>
+                  <span className="text-gray-700 dark:text-gray-300">Former Senior Compositor for film & TV</span>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="/resume.pdf"
+                  href="/resume"
                   className="bg-accent-600 hover:bg-accent-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 inline-flex items-center"
-                  download
                 >
-                  <Download className="h-5 w-5 mr-2" />
-                  Download Resume
+                  View Resume
                 </a>
                 <Link
                   href="/contact"
@@ -149,57 +136,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Professional Philosophy */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Professional Philosophy
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              My approach to technical art is grounded in the belief that technology should enhance creativity, not limit it.
-            </p>
-          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Bridge Building",
-                description: "I excel at translating artistic vision into technical reality, ensuring seamless collaboration between artists and programmers.",
-                icon: "🌉"
-              },
-              {
-                title: "Innovation Focus",
-                description: "Always exploring cutting-edge techniques and tools to push the boundaries of what's possible in real-time graphics.",
-                icon: "🚀"
-              },
-              {
-                title: "Quality First",
-                description: "Committed to delivering high-quality solutions that are both technically sound and artistically compelling.",
-                icon: "✨"
-              }
-            ].map((philosophy, index) => (
-              <motion.div
-                key={philosophy.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-4xl mb-4">{philosophy.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{philosophy.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{philosophy.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Career Timeline */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -214,7 +151,7 @@ export default function About() {
               Career Timeline
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              My journey through the world of technical art and game development
+              My journey from film compositing to game development technical art
             </p>
           </motion.div>
 
@@ -264,75 +201,9 @@ export default function About() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Technical Skills
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Comprehensive toolkit spanning multiple disciplines and technologies
-            </p>
-          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skills.map((skillCategory, index) => (
-              <motion.div
-                key={skillCategory.category}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  {skillCategory.category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {skillCategory.items.map((skill) => (
-                    <span
-                      key={skill}
-                      className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm hover:bg-accent-100 dark:hover:bg-accent-900/20 transition-colors cursor-pointer"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact CTA */}
-      <section className="py-20 bg-accent-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Let's Create Something Amazing
-            </h2>
-            <p className="text-xl text-accent-100 max-w-2xl mx-auto mb-8">
-              Ready to collaborate on your next project? I'd love to hear about your vision and discuss how we can bring it to life.
-            </p>
-            <Link
-              href="/contact"
-              className="bg-white text-accent-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 inline-block"
-            >
-              Start a Conversation
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+
     </div>
   );
 } 

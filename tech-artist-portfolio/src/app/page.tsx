@@ -158,62 +158,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Technical Expertise</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Specialized skills spanning programming, 3D art, and technical innovation
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {[
-              { icon: Code, title: "Programming", skills: "C#, Python, HLSL, JavaScript" },
-              { icon: Gamepad2, title: "Game Engines", skills: "Unity, Unreal Engine, Godot" },
-              { icon: Box, title: "3D Software", skills: "Maya, Blender, Houdini, Substance" }
-            ].map((skill, index) => (
-              <motion.div
-                key={skill.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-accent-100 dark:bg-accent-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <skill.icon className="h-8 w-8 text-accent-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{skill.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{skill.skills}</p>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Skill Tags */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-3"
-          >
-            {['Unity', 'HLSL', 'Python', 'Maya', 'Houdini', 'Substance', 'Blender', 'Git'].map((tag) => (
-              <motion.span
-                key={tag}
-                whileHover={{ y: -2 }}
-                className="bg-gray-100 dark:bg-gray-800 hover:bg-accent-100 dark:hover:bg-accent-900/20 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer"
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* <section className="py-20"> ... Technical Expertise ... </section> */}
     </div>
   );
 }
