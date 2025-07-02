@@ -1,17 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Clock, Users, Monitor, Github, ExternalLink, FileText, Play, Award, Target, Lightbulb, CheckCircle, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Users, Monitor, Github, FileText, Play, Award, Target, Lightbulb, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProjectById, type Project } from '../../../data/projects';
+import { getProjectById } from '../../../data/projects';
 
-interface ProjectPageProps {
-  params: Promise<{ id: string }>;
-}
-
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { id } = await params;
+export default function Page({ params }: { params: { id: string } }) {
+  const { id } = params;
   const project = getProjectById(id);
 
   if (!project) {

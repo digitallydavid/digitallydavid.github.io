@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown, Code, Gamepad2, Box, CheckCircle, ArrowRight } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { getFeaturedProjects } from '../data/projects';
 
@@ -20,10 +20,10 @@ export default function Home() {
             className="space-y-6"
           >
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
-              Hi, I'm <span className="gradient-text text-accent-600">David</span>
+              Hi, I&apos;m <span className="gradient-text text-accent-600">David</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              I'm a Tech Art Goblin, jack-of-all-trades, and practitioner of forbidden spells (game development)
+              I&apos;m a Tech Art Goblin, jack-of-all-trades, and practitioner of forbidden spells (game development)
             </p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

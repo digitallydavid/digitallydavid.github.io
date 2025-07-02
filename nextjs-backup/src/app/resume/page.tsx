@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 
 export default function Resume() {
   return (
@@ -64,7 +64,7 @@ export default function Resume() {
             </div>
             <div>
               <span className="font-bold">3D Character Artist, WE ARE OFK</span> <span className="text-gray-500">Jan 2020 - July 2020, Teddy Dief Productions, Remote</span>
-              <div className="text-gray-700 dark:text-gray-200 text-sm">Expanded the game's cast by adapting the main character base meshes into unique supporting roles. Delivered final models and textures aligned with the project's stylized aesthetic.</div>
+              <div className="text-gray-700 dark:text-gray-200 text-sm">Expanded the game&apos;s cast by adapting the main character base meshes into unique supporting roles. Delivered final models and textures aligned with the project&apos;s stylized aesthetic.</div>
             </div>
             <div>
               <span className="font-bold">3D Character and Tech Artist, Contractor</span> <span className="text-gray-500">May 2020 - Sep 2022, Vancouver, WA</span>
@@ -72,7 +72,7 @@ export default function Resume() {
             </div>
             <div>
               <span className="font-bold">Senior Compositor</span> <span className="text-gray-500">August 2015 - January 2020, Burbank CA</span>
-              <div className="text-gray-700 dark:text-gray-200 text-sm">Worked at Ingenuity Studios, Fuse FX, and Barnstorm VFX<br />Clients: <span className="italic">The Orville, Taylor Swift, Maroon 5, American Horror Story, Grey's Anatomy, 9-1-1</span></div>
+              <div className="text-gray-700 dark:text-gray-200 text-sm">Worked at Ingenuity Studios, Fuse FX, and Barnstorm VFX<br />Clients: <span className="italic">The Orville, Taylor Swift, Maroon 5, American Horror Story, Grey&apos;s Anatomy, 9-1-1</span></div>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function Resume() {
         <div>
           <h2 className="font-bold text-lg text-gray-900 dark:text-white mb-4">Education</h2>
           <div className="mb-2">
-            <span className="font-bold">CGMA "Character Creation for Games"</span> <span className="text-gray-500">2019- October to December, Los Angeles, CA</span>
+            <span className="font-bold">CGMA &quot;Character Creation for Games&quot;</span> <span className="text-gray-500">2019- October to December, Los Angeles, CA</span>
             <div className="text-gray-700 dark:text-gray-200 text-sm">9 week technical course, covering the creation of appealing production ready characters.</div>
           </div>
           <div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ExternalLink, Github, Calendar, Users, Monitor } from 'lucide-react';
 import Link from 'next/link';
-import { projects, getProjectCategories, getProjectsByCategory, type Project } from '../../data/projects';
+import { getProjectCategories, getProjectsByCategory } from '../../data/projects';
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('All');

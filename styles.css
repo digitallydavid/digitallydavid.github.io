@@ -1,0 +1,613 @@
+/* ========================================
+   RESET AND BASE STYLES
+   ======================================== */
+
+/* Reset all default browser styles to ensure consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base body styles - sets the overall look and feel */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #e5e7eb; /* Light grey text for dark theme */
+    background-color: #111827; /* Dark grey background */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Container class for consistent page width and centering */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========================================
+   NAVIGATION BAR
+   ======================================== */
+
+/* Fixed navigation bar at the top of the page */
+.navbar {
+    position: fixed; /* Stays at top when scrolling */
+    top: 0;
+    width: 100%;
+    background: rgba(17, 24, 39, 0.95); /* Semi-transparent dark background */
+    backdrop-filter: blur(10px); /* Blur effect behind the navbar */
+    z-index: 1000; /* Ensures navbar stays above other content */
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid #374151;
+}
+
+/* Container for navbar content */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo/brand name styling */
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f97316; /* Orange accent color */
+    text-decoration: none;
+}
+
+/* Navigation menu list */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+/* Individual navigation links */
+.nav-menu a {
+    text-decoration: none;
+    color: #e5e7eb;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.nav-menu a:hover {
+    color: #f97316; /* Orange on hover */
+}
+
+/* Mobile hamburger menu (hidden on desktop) */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/* Hamburger menu lines */
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #e5e7eb;
+    margin: 3px 0;
+    transition: 0.3s; /* Smooth animation for hamburger */
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+/* Main hero section - full height landing area */
+.hero {
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%); /* Dark gradient background */
+    color: #e5e7eb;
+    position: relative;
+    padding-top: 80px; /* Space for fixed navbar */
+}
+
+/* Hero content container */
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+/* Main headline */
+.hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+/* Gradient text effect for name */
+.highlight {
+    color: #f97316;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Hero subtitle */
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    color: #d1d5db;
+}
+
+/* Button container */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Base button styles */
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Primary button (orange) */
+.btn-primary {
+    background: #f97316;
+    color: #111827;
+}
+
+.btn-primary:hover {
+    background: #ea580c;
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3); /* Orange glow */
+}
+
+/* Secondary button (outlined) */
+.btn-secondary {
+    background: transparent;
+    color: #e5e7eb;
+    border: 2px solid #f97316;
+}
+
+.btn-secondary:hover {
+    background: #f97316;
+    color: #111827;
+    transform: translateY(-2px);
+}
+
+/* Scroll indicator at bottom of hero */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Animated scroll arrow */
+.scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid #f97316;
+    border-bottom: 2px solid #f97316;
+    transform: rotate(45deg);
+    animation: bounce 2s infinite; /* Continuous bounce animation */
+}
+
+/* Bounce animation keyframes */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    40% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+    60% {
+        transform: translateY(-5px) rotate(45deg);
+    }
+}
+
+/* ========================================
+   ABOUT SECTION
+   ======================================== */
+
+.about {
+    padding: 5rem 0;
+    background: #1f2937; /* Slightly lighter than main background */
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #f9fafb;
+}
+
+/* Two-column layout for about content */
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Text takes 2/3, visual takes 1/3 */
+    gap: 4rem;
+    align-items: center;
+}
+
+/* About text styling */
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #d1d5db;
+}
+
+/* Highlights/achievements list */
+.about-highlights {
+    margin: 2rem 0;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.check {
+    color: #10b981; /* Green checkmark */
+    font-weight: bold;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Button container in about section */
+.about-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Visual element container */
+.about-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Profile placeholder with gradient background */
+.profile-placeholder {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: #111827;
+    box-shadow: 0 8px 32px rgba(249, 115, 22, 0.3); /* Orange glow */
+}
+
+/* ========================================
+   PORTFOLIO SECTION
+   ======================================== */
+
+.portfolio {
+    padding: 5rem 0;
+    background: #111827; /* Darkest background */
+}
+
+.portfolio h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #f9fafb;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #9ca3af;
+    margin-bottom: 3rem;
+}
+
+/* Filter buttons for categorizing projects */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #374151;
+    color: #d1d5db;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #f97316;
+    color: #111827;
+}
+
+/* Portfolio grid layout */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+}
+
+/* Individual portfolio item card */
+.portfolio-item {
+    background: #1f2937;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #374151;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border-color: #f97316; /* Orange border on hover */
+}
+
+/* Portfolio image area */
+.portfolio-image {
+    height: 200px;
+    background: linear-gradient(135deg, #374151, #4b5563);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #e5e7eb;
+    position: relative;
+    border-bottom: 1px solid #374151;
+}
+
+/* Featured badge */
+.portfolio-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #f97316;
+    color: #111827;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Portfolio content area */
+.portfolio-content {
+    padding: 1.5rem;
+}
+
+/* Meta information (category and year) */
+.portfolio-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.portfolio-category {
+    background: #374151;
+    color: #e5e7eb;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.portfolio-year {
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* Project title */
+.portfolio-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #f9fafb;
+}
+
+/* Project subtitle */
+.portfolio-subtitle {
+    color: #f97316;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Project description */
+.portfolio-description {
+    color: #d1d5db;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Technology tags */
+.portfolio-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    background: #374151;
+    color: #e5e7eb;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+/* Portfolio link */
+.portfolio-link {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.portfolio-link:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   CONTACT SECTION
+   ======================================== */
+
+.contact {
+    padding: 5rem 0;
+    background: #1f2937;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #f9fafb;
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Individual contact item */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #374151;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    border: 1px solid #4b5563;
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+    border-color: #f97316;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+}
+
+.contact-item a {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    background: #111827;
+    color: #9ca3af;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid #374151;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Mobile devices (tablets and smaller) */
+@media (max-width: 768px) {
+    /* Show hamburger menu on mobile */
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Hide desktop navigation */
+    .nav-menu {
+        display: none;
+    }
+    
+    /* Smaller text sizes for mobile */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    /* Stack about content vertically */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Single column portfolio grid */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Horizontal scroll for filters */
+    .portfolio-filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+    
+    /* Stack buttons vertically */
+    .hero-buttons,
+    .about-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .about h2,
+    .portfolio h2,
+    .contact h2 {
+        font-size: 2rem;
+    }
+} 

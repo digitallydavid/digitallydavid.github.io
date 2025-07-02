@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Twitter, Send, Globe } from 'lucide-react';
+import { Mail, MapPin, Globe } from 'lucide-react';
 
 export default function Contact() {
   return (

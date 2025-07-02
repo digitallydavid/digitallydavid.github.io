@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for SEO and browser compatibility -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Reynolds | Technical Artist Portfolio</title>
+    <meta name="description" content="David Reynolds - Professional technical artist portfolio showcasing game development work, tools, and technical expertise">
+    
+    <!-- Link to our CSS file for styling -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon (website icon in browser tab) -->
+    <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Navigation Bar - Fixed at top of page -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo/Brand name -->
+            <div class="nav-logo">
+                <a href="#home">David Reynolds</a>
+            </div>
+            
+            <!-- Navigation menu links -->
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="assets/resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+            
+            <!-- Mobile hamburger menu (hidden on desktop) -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Main landing area -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <!-- Main headline with gradient text effect -->
+            <h1>Hi, I'm <span class="highlight">David</span></h1>
+            
+            <!-- Subtitle/description -->
+            <p>I'm a Tech Art Goblin, jack-of-all-trades, and practitioner of forbidden spells (game development)</p>
+            
+            <!-- Call-to-action buttons -->
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        
+        <!-- Animated scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section - Personal information -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <!-- Text content -->
+                <div class="about-text">
+                    <p>I'm a versatile technical artist with a passion for tool, system, and feature design, currently working at Airship Syndicate on game performance optimization and animation systems.</p>
+                    <p>My expertise spans character art, technical art, and visual effects, with experience ranging from game development to film compositing. I love solving complex problems and enhancing gameplay experiences through innovative technical solutions.</p>
+                    
+                    <!-- Key highlights/achievements -->
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <span class="check">✓</span>
+                            <span>Current Technical Artist at Airship Syndicate</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="check">✓</span>
+                            <span>Shipped Wayfinder (2023)</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="check">✓</span>
+                            <span>Expert in character art and technical art</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="check">✓</span>
+                            <span>Former Senior Compositor for film & TV</span>
+                        </div>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="about-buttons">
+                        <a href="assets/resume.pdf" target="_blank" class="btn btn-primary">View Resume</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                
+                <!-- Visual element (profile placeholder) -->
+                <div class="about-visual">
+                    <div class="profile-placeholder">👨‍💻</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section - Project showcase -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Featured Work</h2>
+            <p class="section-subtitle">Showcase of recent projects demonstrating technical artistry and innovation</p>
+            
+            <!-- Filter buttons for categorizing projects -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="shaders">Shaders</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+                <button class="filter-btn" data-filter="vfx">VFX</button>
+                <button class="filter-btn" data-filter="procedural">Procedural</button>
+                <button class="filter-btn" data-filter="pipeline">Pipeline</button>
+            </div>
+
+            <!-- Portfolio grid - Projects will be loaded here by JavaScript -->
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolio items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Contact information -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <!-- Email contact -->
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <a href="mailto:digitallydavid@gmail.com">digitallydavid@gmail.com</a>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Vancouver, WA</span>
+                    </div>
+                    
+                    <!-- Resume link -->
+                    <div class="contact-item">
+                        <span class="contact-icon">📄</span>
+                        <a href="assets/resume.pdf" target="_blank">View Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Copyright and closing -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 David Reynolds. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Link to our JavaScript file for interactivity -->
+    <script src="script.js"></script>
+</body>
+</html> 

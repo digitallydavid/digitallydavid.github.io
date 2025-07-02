@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Award, Download, CheckCircle } from 'lucide-react';
+import { Calendar, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 interface TimelineItem {
@@ -75,7 +75,7 @@ export default function About() {
                 About Me
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-                I'm a versatile technical artist with a passion for tool, system, and feature design, 
+                I&apos;m a versatile technical artist with a passion for tool, system, and feature design, 
                 currently working at Airship Syndicate on game performance optimization and animation systems.
               </p>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
