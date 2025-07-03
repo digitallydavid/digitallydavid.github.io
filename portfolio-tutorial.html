@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Build a Technical Artist Portfolio - Web Development Tutorial</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 10px; 
+        }
+        h2 { 
+            color: #34495e; 
+            margin-top: 30px; 
+            background: #ecf0f1; 
+            padding: 10px; 
+            border-left: 4px solid #3498db; 
+        }
+        h3 { 
+            color: #2c3e50; 
+            margin-top: 25px; 
+        }
+        code { 
+            background: #f8f9fa; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-family: 'Courier New', monospace; 
+            color: #2c3e50; 
+            font-weight: 500;
+        }
+        pre { 
+            background: #1e1e1e; 
+            color: #d4d4d4; 
+            padding: 20px; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            margin: 15px 0; 
+            border: 1px solid #333;
+        }
+        pre code {
+            background: transparent;
+            color: #d4d4d4;
+            padding: 0;
+        }
+        .analogy { 
+            background: #fff3cd; 
+            border: 1px solid #ffeaa7; 
+            padding: 15px; 
+            border-radius: 6px; 
+            margin: 15px 0; 
+        }
+        .analogy strong { 
+            color: #856404; 
+        }
+        .file-structure { 
+            background: #1e1e1e; 
+            color: #d4d4d4;
+            border: 1px solid #333; 
+            padding: 20px; 
+            border-radius: 8px; 
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace; 
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+        .key-concept { 
+            background: #d1ecf1; 
+            border-left: 4px solid #bee5eb; 
+            padding: 15px; 
+            margin: 15px 0; 
+        }
+        .warning { 
+            background: #f8d7da; 
+            border: 1px solid #f5c6cb; 
+            padding: 15px; 
+            border-radius: 6px; 
+            margin: 15px 0; 
+        }
+        .toc { 
+            background: #e9ecef; 
+            padding: 20px; 
+            border-radius: 6px; 
+            margin: 20px 0; 
+        }
+        .toc ul { 
+            margin: 0; 
+        }
+        .toc a { 
+            text-decoration: none; 
+            color: #495057; 
+        }
+        .toc a:hover { 
+            color: #3498db; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Building a Technical Artist Portfolio: A Hands-On Web Development Tutorial</h1>
+        
+        <div class="analogy">
+            <strong>What You'll Build:</strong> Throughout this tutorial, you'll create a complete "Services" page for your portfolio website. Each section will teach you a concept and then show you how to apply it to build this page from scratch - HTML structure, CSS styling, JavaScript interactivity, and responsive design.
+        </div>
+
+        <div class="key-concept">
+            <strong>Programming Background Context:</strong> Since you're familiar with coding concepts, you'll recognize many patterns in web development - modular design, separation of concerns, and structured data. The main difference is that instead of compiling to machine code, we're creating documents that browsers interpret and render in real-time.
+        </div>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#architecture">1. Project Architecture & Mental Models</a></li>
+                <li><a href="#html-foundation">2. HTML: The Structure Layer</a></li>
+                <li><a href="#css-styling">3. CSS: The Presentation Layer</a></li>
+                <li><a href="#javascript-behavior">4. JavaScript: The Behavior Layer</a></li>
+                <li><a href="#responsive-design">5. Responsive Design Patterns</a></li>
+                <li><a href="#performance">6. Performance & Optimization</a></li>
+                <li><a href="#deployment">7. Deployment Strategy</a></li>
+                <li><a href="#next-steps">8. Advanced Concepts & Next Steps</a></li>
+            </ul>
+        </div>
+
+        <h2 id="architecture">1. Project Architecture & Mental Models</h2>
+        
+        <div class="analogy">
+            <strong>Think of Web Development Like This:</strong>
+            <ul>
+                <li><strong>HTML</strong> = The structure and content (like a document outline)</li>
+                <li><strong>CSS</strong> = The visual design and layout (like formatting rules)</li>
+                <li><strong>JavaScript</strong> = The interactive behavior (like making things respond to clicks)</li>
+            </ul>
+        </div>
+
+        <h3>File Structure Overview</h3>
+        <div class="file-structure">
+<strong>📁 portfolio-website/</strong>
+- 📄 index.html (Your main homepage)
+- 🎨 styles.css (All visual styling rules)
+- ⚡ script.js (Interactive behavior & animations)
+- 📝 README.md (Project documentation)
+- 📁 assets/
+  - images/
+  - videos/
+  - fonts/
+- 📁 backup_portfolio/ (Alternative implementation)
+        </div>
+
+        <div class="key-concept">
+            <strong>Key Concept:</strong> Unlike compiled programs, web pages are interpreted at runtime by the browser. The browser acts as your "virtual machine" that reads your HTML, applies CSS styling, and executes JavaScript.
+        </div>
+
+        <h3>The Three-Layer Architecture</h3>
+        <p>Modern web development follows a clear separation of concerns - each technology handles a specific job:</p>
+        
+        <div class="key-concept">
+            <strong>Separation of Concerns:</strong> Each layer has a distinct responsibility:
+            <ul>
+                <li><strong>HTML</strong> - Defines what content exists and how it's structured</li>
+                <li><strong>CSS</strong> - Controls how that content looks and is positioned</li>
+                <li><strong>JavaScript</strong> - Makes the content interactive and dynamic</li>
+            </ul>
+            This separation makes code easier to maintain, debug, and modify.
+        </div>
+
+        <h2 id="html-foundation">2. HTML: The Structure Layer</h2>
+        
+        <div class="analogy">
+            <strong>HTML Analogy:</strong> Think of HTML like creating the blueprint or outline of a document. Each HTML element is like a labeled container that holds specific types of content - headings, paragraphs, images, etc. The browser knows how to handle each type of container.
+        </div>
+
+        <h3>Semantic HTML Structure</h3>
+        <p>HTML uses semantic tags that describe the <em>meaning</em> of content, not its appearance:</p>
+
+        <pre><code>&lt;!-- Each tag describes what the content IS, not how it looks --&gt;
+&lt;nav&gt;        &lt;!-- Navigation menu --&gt;
+&lt;header&gt;     &lt;!-- Top of page header --&gt;
+&lt;main&gt;       &lt;!-- Main content area --&gt;
+&lt;section&gt;    &lt;!-- A distinct section of content --&gt;
+&lt;article&gt;    &lt;!-- Self-contained piece of content --&gt;
+&lt;aside&gt;      &lt;!-- Sidebar or supplementary info --&gt;
+&lt;footer&gt;     &lt;!-- Bottom of page footer --&gt;</code></pre>
+
+        <h3>Your Portfolio's HTML Structure</h3>
+        <p>Looking at your <code>index.html</code>, here's how the structure works:</p>
+
+        <pre><code>&lt;!DOCTYPE html&gt;  &lt;!-- Tells browser this is HTML5 --&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;!-- Metadata: information about the page --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Technical Artist Portfolio&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Navigation menu --&gt;
+    &lt;nav id="navbar"&gt;
+        &lt;div class="container"&gt;
+            &lt;a href="#home" class="logo"&gt;TechArtist&lt;/a&gt;
+            &lt;ul class="nav-links"&gt;
+                &lt;li&gt;&lt;a href="#portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+    
+    &lt;!-- Hero Section: main banner area --&gt;
+    &lt;section id="home"&gt;
+        &lt;h1&gt;Technical Artist&lt;/h1&gt;
+        &lt;p&gt;Bridging art and technology...&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <div class="key-concept">
+            <strong>Key Concept:</strong> HTML attributes like <code>id</code> and <code>class</code> are like labels or names you can give to elements. CSS and JavaScript use these labels to find and modify specific elements on your page. Think of them as a way to give elements unique identifiers or group them into categories.
+        </div>
+
+        <h3>🛠️ Hands-On Exercise: Create Your Services Page Structure</h3>
+        <p><strong>Your Task:</strong> Create a new HTML file called <code>services.html</code> and build the basic structure for a services page that showcases your technical art offerings.</p>
+
+        <div class="key-concept">
+            <strong>Step-by-Step Instructions:</strong>
+            <ol>
+                <li>Create a new file called <code>services.html</code> in your project root</li>
+                <li>Copy the basic HTML5 structure from your <code>index.html</code></li>
+                <li>Update the title to "Services - Technical Artist Portfolio"</li>
+                <li>Create sections for different service categories (Shaders, Tools, VFX, Consulting)</li>
+                <li>Add a hero section and navigation that matches your main site</li>
+            </ol>
+        </div>
+
+        <h4>Your Services Page HTML Structure:</h4>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Services - Technical Artist Portfolio&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Navigation (copy from index.html) --&gt;
+    &lt;nav id="navbar"&gt;
+        &lt;div class="container"&gt;
+            &lt;a href="index.html" class="logo"&gt;TechArtist&lt;/a&gt;
+            &lt;ul class="nav-links"&gt;
+                &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="services.html" class="active"&gt;Services&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- Hero Section --&gt;
+    &lt;section id="hero" class="hero-services"&gt;
+        &lt;div class="container"&gt;
+            &lt;h1&gt;Technical Art Services&lt;/h1&gt;
+            &lt;p&gt;Professional solutions for game development challenges&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Services Grid --&gt;
+    &lt;section id="services" class="services-section"&gt;
+        &lt;div class="container"&gt;
+            &lt;h2&gt;What I Offer&lt;/h2&gt;
+            &lt;div class="services-grid"&gt;
+                &lt;div class="service-card" id="shader-services"&gt;
+                    &lt;h3&gt;Custom Shaders&lt;/h3&gt;
+                    &lt;p&gt;HLSL/GLSL shader development for stylized rendering&lt;/p&gt;
+                    &lt;ul class="service-features"&gt;
+                        &lt;li&gt;Stylized rendering effects&lt;/li&gt;
+                        &lt;li&gt;Performance optimization&lt;/li&gt;
+                        &lt;li&gt;Cross-platform compatibility&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="service-card" id="tool-services"&gt;
+                    &lt;h3&gt;Pipeline Tools&lt;/h3&gt;
+                    &lt;p&gt;Python/C# tools for workflow automation&lt;/p&gt;
+                    &lt;ul class="service-features"&gt;
+                        &lt;li&gt;Asset pipeline automation&lt;/li&gt;
+                        &lt;li&gt;Custom editor tools&lt;/li&gt;
+                        &lt;li&gt;Batch processing scripts&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="service-card" id="vfx-services"&gt;
+                    &lt;h3&gt;VFX Development&lt;/h3&gt;
+                    &lt;p&gt;Real-time visual effects and particle systems&lt;/p&gt;
+                    &lt;ul class="service-features"&gt;
+                        &lt;li&gt;Particle system design&lt;/li&gt;
+                        &lt;li&gt;Real-time VFX optimization&lt;/li&gt;
+                        &lt;li&gt;Interactive effect systems&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <div class="warning">
+            <strong>💡 What to Notice:</strong>
+            <ul>
+                <li><strong>Semantic Structure:</strong> Each service is a separate <code>div</code> with meaningful class names</li>
+                <li><strong>Unique IDs:</strong> Each service card has an ID for targeting with CSS/JavaScript</li>
+                <li><strong>Lists for Features:</strong> Using <code>&lt;ul&gt;</code> for service features (semantic HTML)</li>
+                <li><strong>Consistent Navigation:</strong> Same nav structure as main site for consistency</li>
+            </ul>
+        </div>
+
+        <h2 id="css-styling">3. CSS: The Presentation Layer</h2>
+
+        <div class="analogy">
+            <strong>CSS Analogy:</strong> CSS is like a style guide or formatting rulebook. You define rules that tell the browser how to display your HTML content - what colors to use, how to arrange elements, what fonts to apply, etc. The browser reads these rules and applies them to create the visual design you see.
+        </div>
+
+        <h3>CSS Selectors and Rules</h3>
+        <p>CSS uses selectors to target HTML elements - they're like search patterns that find specific elements to style:</p>
+
+        <pre><code>/* Element selector - targets ALL elements of this type */
+h1 {
+    color: #2c3e50;
+    font-size: 3rem;
+}
+
+/* Class selector - targets elements with this class name */
+.button {
+    background-color: #3498db;
+    padding: 12px 24px;
+    border-radius: 6px;
+}
+
+/* ID selector - targets the ONE element with this ID */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Descendant selector - targets elements inside other elements */
+.portfolio-card .title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}</code></pre>
+
+        <h3>CSS Box Model</h3>
+        <div class="analogy">
+            <strong>Box Model Analogy:</strong> Every HTML element is like a rectangular box with layers - imagine a picture frame with matting. You have the content (the picture), padding (the matting around it), border (the frame), and margin (the space between frames on the wall).
+        </div>
+
+        <pre><code>/* Define the size and spacing of elements */
+.portfolio-card {
+    width: 300px;           /* Content width */
+    height: 200px;          /* Content height */
+    padding: 20px;          /* Inner spacing around content */
+    border: 2px solid #ddd; /* Border around the element */
+    margin: 10px;           /* Outer spacing between elements */
+    
+    /* Visual effects */
+    border-radius: 8px;     /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Drop shadow */
+    transition: transform 0.3s ease; /* Animation transition */
+}
+
+/* Hover effect - what happens when you mouse over */
+.portfolio-card:hover {
+    transform: translateY(-5px); /* Move up slightly */
+}</code></pre>
+
+        <h3>🛠️ Hands-On Exercise: Style Your Services Page</h3>
+        <p><strong>Your Task:</strong> Add CSS to make your services page look professional and match your portfolio's design.</p>
+
+        <div class="key-concept">
+            <strong>Step-by-Step Instructions:</strong>
+            <ol>
+                <li>Add styles for the hero section background and typography</li>
+                <li>Create a grid layout for the service cards</li>
+                <li>Style each service card with hover effects</li>
+                <li>Make the navigation highlight the current page</li>
+            </ol>
+        </div>
+
+        <h4>Add This CSS to Your styles.css:</h4>
+        <pre><code>/* Services Page Styles */
+.hero-services {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 0 80px;
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-services h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero-services p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Services Grid Layout */
+.services-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.services-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #2c3e50;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Service Card Styling */
+.service-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-top: 4px solid #3498db;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.service-card h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.service-card p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Service Features List */
+.service-features {
+    list-style: none;
+    padding: 0;
+}
+
+.service-features li {
+    padding: 8px 0;
+    color: #555;
+    position: relative;
+    padding-left: 25px;
+}
+
+.service-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Navigation Active State */
+.nav-links a.active {
+    color: #3498db;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-services h1 {
+        font-size: 2.5rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service-card {
+        padding: 30px 20px;
+    }
+}</code></pre>
+
+        <div class="warning">
+            <strong>💡 CSS Concepts in Action:</strong>
+            <ul>
+                <li><strong>Grid Layout:</strong> <code>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))</code> creates responsive columns</li>
+                <li><strong>Hover Effects:</strong> <code>transform: translateY(-10px)</code> creates smooth lift animation</li>
+                <li><strong>CSS Variables:</strong> You can replace colors with <code>var(--primary-color)</code> for consistency</li>
+                <li><strong>Pseudo-elements:</strong> <code>::before</code> adds checkmarks without extra HTML</li>
+            </ul>
+        </div>
+
+        <h3>Layout Systems</h3>
+        <p>CSS offers several layout systems. Your portfolio uses modern approaches:</p>
+
+        <h4>Flexbox (1D Layout)</h4>
+        <pre><code>/* Flexbox - arranging items in a row or column */
+.nav-links {
+    display: flex;              /* Enable flexbox */
+    justify-content: space-between; /* Spread items across width */
+    align-items: center;        /* Center items vertically */
+    gap: 20px;                 /* Space between items */
+}
+
+/* Flex items can grow or stay fixed size */
+.flex-item {
+    flex: 1;        /* Grow to fill available space */
+    flex: 0 0 200px; /* Stay fixed at 200px width */
+}</code></pre>
+
+        <h4>CSS Grid (2D Layout)</h4>
+        <pre><code>/* Grid - creates rows and columns like a table */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-gap: 20px;                       /* Spacing between cells */
+    
+    /* Responsive: columns adapt to screen size */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}</code></pre>
+
+        <h3>CSS Custom Properties (Variables)</h3>
+        <pre><code>/* Define reusable values */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --font-size-large: 2.5rem;
+    --spacing-unit: 20px;
+}
+
+/* Use variables throughout your CSS */
+.button {
+    background-color: var(--primary-color);
+    font-size: var(--font-size-large);
+    margin: var(--spacing-unit);
+}</code></pre>
+
+        <h2 id="javascript-behavior">4. JavaScript: The Behavior Layer</h2>
+
+        <div class="analogy">
+            <strong>JavaScript Analogy:</strong> JavaScript is what makes your website interactive. It handles user actions (clicks, scrolls, form submissions), updates content dynamically, and responds to events. Think of it as the "brains" that makes your static HTML and CSS come alive.
+        </div>
+
+        <h3>DOM Manipulation</h3>
+        <p>The DOM (Document Object Model) is JavaScript's way of accessing and modifying your HTML elements:</p>
+
+        <pre><code>// Finding elements on your page
+const navbar = document.getElementById('navbar');
+const buttons = document.querySelectorAll('.button');
+const cards = document.getElementsByClassName('portfolio-card');
+
+// Changing elements
+navbar.style.backgroundColor = '#333';
+buttons.forEach(btn => {
+    btn.addEventListener('click', handleButtonClick);
+});
+
+// Creating new elements and adding them to the page
+const newCard = document.createElement('div');
+newCard.className = 'portfolio-card';
+newCard.innerHTML = '&lt;h3&gt;New Project&lt;/h3&gt;';
+document.querySelector('.portfolio-grid').appendChild(newCard);</code></pre>
+
+        <h3>Event Handling</h3>
+        <p>JavaScript events let you respond to user actions and page events:</p>
+
+        <pre><code>// Wait for page to fully load before running code
+document.addEventListener('DOMContentLoaded', function() {
+    // Setup code runs once page is ready
+    initializeNavigation();
+    setupScrollEffects();
+    loadPortfolioData();
+});
+
+// Respond to scrolling
+window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    const navbar = document.getElementById('navbar');
+    
+    // Change navbar appearance based on scroll position
+    if (scrollY > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Handle button clicks
+function handleButtonClick(event) {
+    event.preventDefault(); // Stop default link behavior
+    const target = event.target.getAttribute('href');
+    
+    // Smooth scroll to target section
+    document.querySelector(target).scrollIntoView({
+        behavior: 'smooth'
+    });
+}</code></pre>
+
+        <h3>Modern JavaScript Features</h3>
+        <p>Your portfolio uses modern JavaScript patterns:</p>
+
+        <pre><code>// Arrow functions - concise function syntax
+const portfolioData = [
+    { id: 1, title: 'Shader System', category: 'shaders' },
+    { id: 2, title: 'Pipeline Tools', category: 'tools' }
+];
+
+// Template literals - like string formatting
+const createProjectCard = (project) => `
+    &lt;div class="portfolio-card" data-category="${project.category}"&gt;
+        &lt;h3&gt;${project.title}&lt;/h3&gt;
+        &lt;p&gt;Category: ${project.category}&lt;/p&gt;
+    &lt;/div&gt;
+`;
+
+// Array methods - like STL algorithms
+const shaderProjects = portfolioData.filter(p => p.category === 'shaders');
+const projectCards = portfolioData.map(createProjectCard);
+
+// Async/await - like Promise-based asynchronous programming
+async function loadPortfolioData() {
+    try {
+        const response = await fetch('/api/projects');
+        const data = await response.json();
+        renderProjects(data);
+    } catch (error) {
+        console.error('Failed to load projects:', error);
+    }
+}</code></pre>
+
+        <h2 id="responsive-design">5. Responsive Design Patterns</h2>
+
+        <div class="analogy">
+            <strong>Responsive Design Analogy:</strong> Think of responsive design like creating a flexible workspace. Just as you might rearrange furniture when moving from a large office to a small one, responsive design rearranges and resizes website elements to work well on everything from phones to large desktop monitors.
+        </div>
+
+        <h3>Media Queries</h3>
+        <p>Media queries let you apply different styles based on screen size:</p>
+
+        <pre><code>/* Base styles - what appears on desktop */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Tablet styles - screens smaller than 768px */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .nav-links {
+        display: none; /* Hide desktop navigation */
+    }
+    
+    .mobile-menu {
+        display: block; /* Show mobile menu */
+    }
+}
+
+/* Mobile styles - screens smaller than 480px */
+@media (max-width: 480px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Single column */
+    }
+    
+    .hero-title {
+        font-size: 2rem; /* Smaller text */
+    }
+}</code></pre>
+
+        <h3>Flexible Units</h3>
+        <pre><code>/* Relative units - like percentages and ratios */
+.container {
+    width: 90%;        /* 90% of parent width */
+    max-width: 1200px; /* Never exceed 1200px */
+    margin: 0 auto;    /* Center horizontally */
+}
+
+/* Viewport units - relative to screen size */
+.hero-section {
+    height: 100vh;     /* Full viewport height */
+    width: 100vw;      /* Full viewport width */
+}
+
+/* rem units - relative to root font size */
+.title {
+    font-size: 2.5rem; /* 2.5 × root font size */
+    margin-bottom: 1rem; /* 1 × root font size */
+}</code></pre>
+
+        <h2 id="performance">6. Performance & Optimization</h2>
+
+        <div class="analogy">
+            <strong>Performance Analogy:</strong> Web performance is like optimizing any application - you want fast loading times, smooth animations, and efficient resource usage. The difference is you're optimizing for network delivery and browser rendering rather than CPU and memory constraints.
+        </div>
+
+        <h3>Asset Optimization</h3>
+        <pre><code>/* CSS optimization techniques */
+
+/* Minimize repaints and reflows */
+.smooth-animation {
+    /* Use transforms instead of changing layout properties */
+    transform: translateX(100px); /* Good - composited */
+    /* left: 100px; */             /* Bad - causes layout */
+}
+
+/* Use efficient selectors */
+.portfolio-card { /* Good - single class */
+    color: blue;
+}
+/* div.container .content p.text { } */ /* Bad - complex selector */
+
+/* Minimize CSS size */
+:root {
+    --primary: #3498db; /* Use variables to avoid repetition */
+}
+.btn-primary, .link-primary { color: var(--primary); }</code></pre>
+
+        <h3>JavaScript Performance</h3>
+        <pre><code>// Efficient DOM manipulation
+// Bad - multiple DOM queries and layouts
+for (let i = 0; i < items.length; i++) {
+    document.querySelector('.container').innerHTML += `&lt;div&gt;${items[i]}&lt;/div&gt;`;
+}
+
+// Good - batch DOM updates
+const container = document.querySelector('.container');
+const fragment = document.createDocumentFragment();
+items.forEach(item => {
+    const div = document.createElement('div');
+    div.textContent = item;
+    fragment.appendChild(div);
+});
+container.appendChild(fragment);
+
+// Debounce expensive operations - like throttling update rates
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Usage: throttle scroll events
+const handleScroll = debounce(() => {
+    // Expensive scroll handling
+}, 100); // Only execute every 100ms
+
+window.addEventListener('scroll', handleScroll);</code></pre>
+
+        <h3>🛠️ Hands-On Exercise: Add Interactivity to Your Services Page</h3>
+        <p><strong>Your Task:</strong> Add JavaScript to make your services page interactive with animations, form handling, and dynamic content.</p>
+
+        <div class="key-concept">
+            <strong>Step-by-Step Instructions:</strong>
+            <ol>
+                <li>Add scroll animations that trigger when service cards come into view</li>
+                <li>Create a simple contact form that appears when clicking a service</li>
+                <li>Add smooth scrolling and navigation highlighting</li>
+                <li>Implement a simple modal for service details</li>
+            </ol>
+        </div>
+
+        <h4>Add This JavaScript to Your script.js:</h4>
+        <pre><code>// Services Page Interactive Features
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all interactive features
+    initServiceAnimations();
+    initServiceModals();
+    initContactForm();
+    initSmoothScroll();
+});
+
+// Animate service cards when they come into view
+function initServiceAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Stagger the animation of each card
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, index * 200);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Add click handlers for service cards to show details
+function initServiceModals() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const serviceType = this.id.replace('-services', '');
+            showServiceModal(serviceType);
+        });
+        
+        // Add visual feedback on hover
+        card.addEventListener('mouseenter', function() {
+            this.style.cursor = 'pointer';
+        });
+    });
+}
+
+// Show detailed information about a service
+function showServiceModal(serviceType) {
+    const serviceDetails = {
+        shader: {
+            title: "Custom Shader Development",
+            description: "Professional HLSL/GLSL shader creation for your project",
+            details: [
+                "Stylized rendering effects",
+                "Performance-optimized code",
+                "Cross-platform compatibility",
+                "Documentation and support"
+            ],
+            price: "Starting at $500"
+        },
+        tool: {
+            title: "Pipeline Tool Development",
+            description: "Python/C# automation tools for your workflow",
+            details: [
+                "Custom Maya/Blender tools",
+                "Asset processing automation",
+                "UI development",
+                "Integration support"
+            ],
+            price: "Starting at $800"
+        },
+        vfx: {
+            title: "VFX System Development",
+            description: "Real-time visual effects and particle systems",
+            details: [
+                "Particle system design",
+                "Shader-based effects",
+                "Performance optimization",
+                "Interactive systems"
+            ],
+            price: "Starting at $1200"
+        }
+    };
+
+    const service = serviceDetails[serviceType];
+    if (!service) return;
+
+    // Create modal HTML
+    const modalHTML = `
+        &lt;div class="modal-overlay" id="serviceModal"&gt;
+            &lt;div class="modal-content"&gt;
+                &lt;span class="modal-close"&gt;&amp;times;&lt;/span&gt;
+                &lt;h2&gt;${service.title}&lt;/h2&gt;
+                &lt;p&gt;${service.description}&lt;/p&gt;
+                &lt;ul&gt;
+                    ${service.details.map(detail => `&lt;li&gt;${detail}&lt;/li&gt;`).join('')}
+                &lt;/ul&gt;
+                &lt;div class="modal-price"&gt;${service.price}&lt;/div&gt;
+                &lt;button class="btn-contact" onclick="openContactForm('${serviceType}')"&gt;
+                    Get Quote
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    `;
+
+    // Add modal to page
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Add event listeners
+    const modal = document.getElementById('serviceModal');
+    const closeBtn = modal.querySelector('.modal-close');
+    
+    closeBtn.addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+    });
+}
+
+// Initialize contact form functionality
+function initContactForm() {
+    // This would typically connect to your contact form
+    window.openContactForm = function(serviceType) {
+        console.log(`Opening contact form for ${serviceType} service`);
+        // You could show a contact form modal or redirect to contact page
+        alert(`Contact form for ${serviceType} service - implement your form logic here!`);
+    };
+}
+
+// Smooth scrolling for navigation links
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}</code></pre>
+
+        <h4>Add This CSS for JavaScript-Enhanced Elements:</h4>
+        <pre><code>/* Animation classes for service cards */
+.service-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.service-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #999;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3498db;
+    margin: 20px 0;
+}
+
+.btn-contact {
+    background: #3498db;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.btn-contact:hover {
+    background: #2980b9;
+}</code></pre>
+
+        <div class="warning">
+            <strong>💡 JavaScript Concepts in Action:</strong>
+            <ul>
+                <li><strong>Intersection Observer:</strong> Efficiently detects when elements come into view for animations</li>
+                <li><strong>Event Delegation:</strong> Adding click handlers to multiple elements efficiently</li>
+                <li><strong>Template Literals:</strong> Using backticks for dynamic HTML generation</li>
+                <li><strong>DOM Manipulation:</strong> Creating, modifying, and removing elements dynamically</li>
+            </ul>
+        </div>
+
+        <h2 id="deployment">7. Deployment Strategy</h2>
+
+        <div class="analogy">
+            <strong>Deployment Analogy:</strong> Deploying a website is like publishing a document or application for others to access. Instead of installing software on individual computers, you put your files on a web server where anyone with internet access can view them through their browser.
+        </div>
+
+        <h3>Static Site Deployment</h3>
+        <p>Your portfolio is a static site, which means it doesn't need server-side processing:</p>
+
+        <div class="file-structure">
+<strong>🔧 Build Process Steps:</strong>
+- 1️⃣ HTML files (Already ready to go)
+- 2️⃣ CSS files (Minify for production)
+- 3️⃣ JavaScript files (Minify and bundle)
+- 4️⃣ Assets (Optimize images, compress files)
+- 5️⃣ Upload (Deploy to hosting like GitHub Pages, Netlify, etc.)
+        </div>
+
+        <h3>GitHub Pages Deployment</h3>
+        <pre><code># Git commands for deployment
+git add .
+git commit -m "Deploy portfolio updates"
+git push origin main
+
+# GitHub Pages automatically serves from:
+# - main branch root (your current setup)
+# - docs/ folder
+# - gh-pages branch</code></pre>
+
+        <h2 id="next-steps">8. Advanced Concepts & Next Steps</h2>
+
+        <h3>Modern Web Development Evolution</h3>
+        <div class="key-concept">
+            <strong>Learning Path:</strong> You've seen the traditional approach. Modern web development introduces:
+            <ul>
+                <li><strong>Build Tools:</strong> Webpack, Vite (like make systems)</li>
+                <li><strong>Frameworks:</strong> React, Vue, Angular (like application frameworks)</li>
+                <li><strong>CSS Preprocessors:</strong> Sass, Less (like C preprocessors)</li>
+                <li><strong>Package Managers:</strong> npm, yarn (like pip for Python)</li>
+            </ul>
+        </div>
+
+        <h3>Framework Comparison</h3>
+        <pre><code>// Traditional JavaScript (what you're using)
+document.getElementById('counter').innerHTML = count;
+
+// React (component-based)
+function Counter() {
+    const [count, setCount] = useState(0);
+    return &lt;div&gt;{count}&lt;/div&gt;;
+}
+
+// Vue (template-based)
+&lt;template&gt;
+    &lt;div&gt;{{ count }}&lt;/div&gt;
+&lt;/template&gt;</code></pre>
+
+        <h3>Build Tools and Workflow</h3>
+        <pre><code>// package.json - like a Makefile for web projects
+{
+    "scripts": {
+        "dev": "vite serve",        // Development server
+        "build": "vite build",      // Production build
+        "preview": "vite preview"   // Preview built site
+    },
+    "dependencies": {
+        "react": "^18.0.0"          // Like #include statements
+    }
+}</code></pre>
+
+        <div class="warning">
+            <strong>When to Consider Frameworks:</strong> 
+            <ul>
+                <li>Complex interactive features (like admin panels)</li>
+                <li>Dynamic content that changes frequently</li>
+                <li>Team collaboration on larger projects</li>
+                <li>Need for component reusability across multiple pages</li>
+            </ul>
+            For portfolios like yours, traditional HTML/CSS/JS is often the better choice - it's simpler, faster loading, and easier to maintain.
+        </div>
+
+        <h3>Your Next Learning Steps</h3>
+        <ol>
+            <li><strong>Master CSS Grid and Flexbox</strong> - Essential for modern layouts</li>
+            <li><strong>Learn CSS Animations</strong> - Create engaging micro-interactions</li>
+            <li><strong>JavaScript ES6+ Features</strong> - Modern syntax and patterns</li>
+            <li><strong>Web APIs</strong> - Intersection Observer, Fetch API, Local Storage</li>
+            <li><strong>Performance Monitoring</strong> - Lighthouse, DevTools profiling</li>
+            <li><strong>Accessibility (a11y)</strong> - WCAG guidelines, screen readers</li>
+        </ol>
+
+        <h3>Tools for Development</h3>
+        <ul>
+            <li><strong>VS Code Extensions:</strong> Live Server, Prettier, HTML/CSS/JS snippets</li>
+            <li><strong>Browser DevTools:</strong> Chrome/Firefox developer tools for debugging</li>
+            <li><strong>Design Tools:</strong> Figma for mockups, Adobe XD for prototypes</li>
+            <li><strong>Version Control:</strong> Git workflows, branching strategies</li>
+        </ul>
+
+        <div class="key-concept">
+            <strong>Final Thought:</strong> Web development follows many of the same principles you know from systems programming - modularity, separation of concerns, performance optimization, and debugging. The main difference is the runtime environment (browser) and the declarative nature of HTML/CSS versus imperative programming languages.
+        </div>
+
+        <h2>🎯 Complete Your Services Page - Final Steps</h2>
+        
+        <div class="key-concept">
+            <strong>Congratulations!</strong> You've learned the core concepts and built a complete services page. Here's how to finish and integrate it with your portfolio:
+        </div>
+
+        <h3>✅ Final Checklist</h3>
+        <div class="file-structure">
+<strong>📋 Tasks to Complete:</strong>
+- ✅ Create services.html with the HTML structure
+- ✅ Add CSS styles to your styles.css file  
+- ✅ Add JavaScript functionality to script.js
+- 🔲 Test all interactive features (modals, animations, hover effects)
+- 🔲 Add link to services page in your main navigation
+- 🔲 Test responsive design on different screen sizes
+- 🔲 Optimize images and test loading speed
+- 🔲 Deploy to GitHub Pages or your hosting platform
+        </div>
+
+        <h3>🔗 Integration with Your Main Site</h3>
+        <p>Update your main <code>index.html</code> navigation to include your new services page:</p>
+        
+        <pre><code>&lt;ul class="nav-links"&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="services.html"&gt;Services&lt;/a&gt;&lt;/li&gt;  &lt;!-- Add this line --&gt;
+    &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h3>🚀 What You've Accomplished</h3>
+        <div class="analogy">
+            <strong>You've Built a Complete Web Page Using:</strong>
+            <ul>
+                <li><strong>HTML:</strong> Semantic structure with navigation, hero section, service cards, and lists</li>
+                <li><strong>CSS:</strong> Grid layouts, hover effects, animations, responsive design, and custom styling</li>
+                <li><strong>JavaScript:</strong> Intersection Observer, modal popups, event handling, and dynamic content</li>
+                <li><strong>Best Practices:</strong> Separation of concerns, semantic markup, and progressive enhancement</li>
+            </ul>
+        </div>
+
+        <h3>🎓 Your Next Learning Steps</h3>
+        <ol>
+            <li><strong>Expand Your Services Page:</strong> Add testimonials, pricing tables, or a contact form</li>
+            <li><strong>Create More Pages:</strong> Build an About page or Blog using the same techniques</li>
+            <li><strong>Learn Advanced CSS:</strong> CSS animations, custom properties, and advanced grid layouts</li>
+            <li><strong>Modern JavaScript:</strong> Async/await, fetch API, and ES6+ features</li>
+            <li><strong>Performance:</strong> Image optimization, lazy loading, and site speed optimization</li>
+            <li><strong>Accessibility:</strong> ARIA labels, keyboard navigation, and screen reader support</li>
+        </ol>
+
+        <h3>💡 Pro Tips for Your Portfolio</h3>
+        <div class="warning">
+            <strong>Professional Touch:</strong>
+            <ul>
+                <li><strong>Consistent Design:</strong> Use the same colors, fonts, and spacing across all pages</li>
+                <li><strong>Clear Navigation:</strong> Make it obvious how to get back to your main portfolio</li>
+                <li><strong>Call-to-Action:</strong> Always guide visitors toward contacting you or viewing your work</li>
+                <li><strong>Mobile-First:</strong> Test on your phone - most visitors will view on mobile</li>
+                <li><strong>Loading Speed:</strong> Optimize images and minimize code for fast loading</li>
+            </ul>
+        </div>
+
+        <div class="key-concept">
+            <strong>Remember:</strong> This services page demonstrates your technical skills while also serving your business goals. It shows potential clients you can build professional web interfaces, handle complex layouts, and create smooth user experiences - all valuable technical art skills!
+        </div>
+
+        <hr style="margin: 40px 0;">
+        <p><em>You've built a complete web page from scratch using traditional HTML, CSS, and JavaScript. These foundations will serve you well whether you continue with traditional web development or explore modern frameworks. The key principles - clean code, user-focused design, and progressive enhancement - remain constant across all web technologies.</em></p>
+    </div>
+</body>
+</html> 
