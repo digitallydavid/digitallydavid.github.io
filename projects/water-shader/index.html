@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylized Water Shader - David Reynolds</title>
+    <meta name="description" content="Real-time stylized water shader with foam and caustics for fantasy environments">
+    
+    <!-- Link to main site styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    
+    <!-- Project-specific styles -->
+    <style>
+        .project-nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .project-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            color: #2980b9;
+        }
+        
+        .breadcrumb {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .project-content {
+            padding: 80px 0;
+        }
+        
+        .project-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .project-sidebar {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            height: fit-content;
+        }
+        
+        .gallery-placeholder {
+            background: #ecf0f1;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 2rem 0;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .project-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Project Navigation -->
+    <nav class="project-nav">
+        <div class="container">
+            <a href="../../index.html#portfolio" class="back-link">← Back to Portfolio</a>
+            <div class="breadcrumb">
+                <span>Projects / Stylized Water Shader</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <h1>Stylized Water Shader</h1>
+            <p>Real-time water rendering with foam and caustics for fantasy environments</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Category:</strong> Shaders
+                </div>
+                <div class="meta-item">
+                    <strong>Tools:</strong> HLSL, Unity, Shader Graph
+                </div>
+                <div class="meta-item">
+                    <strong>Year:</strong> 2023
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-layout">
+                <div class="project-main">
+                    <!-- Project Gallery -->
+                    <div class="gallery-placeholder">
+                        🌊 Project Images/Videos Go Here
+                    </div>
+                    
+                    <!-- Project Overview -->
+                    <div class="project-section">
+                        <h2>Project Overview</h2>
+                        <p>This stylized water shader was developed for a fantasy adventure game requiring dynamic water surfaces with foam generation and caustic light patterns. The shader balances visual appeal with performance, maintaining 60 FPS on mid-range hardware.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Real-time wave simulation using sine wave combinations</li>
+                            <li>Dynamic foam generation based on wave height and shore proximity</li>
+                            <li>Caustic light patterns using scrolling textures</li>
+                            <li>Depth-based color blending for realistic water depth</li>
+                            <li>Configurable parameters for different water types</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Technical Implementation -->
+                    <div class="project-section">
+                        <h2>Technical Implementation</h2>
+                        <p>The shader uses a multi-layered approach combining vertex displacement for waves, fragment shader effects for surface details, and screen-space techniques for depth-based effects.</p>
+                        
+                        <div class="code-block">
+                            <h4>Wave Calculation (HLSL)</h4>
+                            <pre><code>float4 CalculateWaves(float2 uv, float time) {
+    float2 wave1 = sin(uv * 10.0 + time * 2.0) * 0.1;
+    float2 wave2 = sin(uv * 15.0 + time * 1.5) * 0.05;
+    float2 wave3 = sin(uv * 20.0 + time * 3.0) * 0.025;
+    
+    float waveHeight = wave1.x + wave2.x + wave3.x;
+    float2 waveNormal = normalize(float2(wave1.y, wave2.y) + float2(wave3.y, 1.0));
+    
+    return float4(waveNormal, waveHeight, 1.0);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Sidebar -->
+                <div class="project-sidebar">
+                    <h3>Technical Specifications</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Engine:</strong> Unity 2022.3 LTS</li>
+                        <li><strong>Render Pipeline:</strong> URP</li>
+                        <li><strong>Shader Language:</strong> HLSL</li>
+                        <li><strong>Performance:</strong> 60 FPS @ 1080p</li>
+                        <li><strong>Platform:</strong> PC, Console</li>
+                    </ul>
+                    
+                    <h3>Development Time</h3>
+                    <p><strong>3 weeks</strong> (Research, Development, Optimization)</p>
+                    
+                    <h3>Challenges Solved</h3>
+                    <ul>
+                        <li>Realistic foam generation</li>
+                        <li>Performance optimization</li>
+                        <li>Multiple water types</li>
+                        <li>Shore interaction effects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 David Reynolds. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

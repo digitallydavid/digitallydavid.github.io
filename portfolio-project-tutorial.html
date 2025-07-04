@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Portfolio Project Page - Interactive Web Development Tutorial</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #2c3e50; 
+            border-bottom: 3px solid #3498db; 
+            padding-bottom: 10px; 
+        }
+        h2 { 
+            color: #34495e; 
+            margin-top: 30px; 
+            background: #ecf0f1; 
+            padding: 10px; 
+            border-left: 4px solid #3498db; 
+        }
+        .challenge { 
+            background: #fff3cd; 
+            border: 1px solid #ffeaa7; 
+            padding: 15px; 
+            border-radius: 6px; 
+            margin: 15px 0; 
+        }
+        .challenge strong { 
+            color: #856404; 
+        }
+        .solution { 
+            background: #d4edda; 
+            border: 1px solid #c3e6cb; 
+            border-radius: 6px; 
+            margin: 15px 0; 
+        }
+        .solution strong { 
+            color: #155724; 
+        }
+        .solution-header {
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #c3e6cb;
+            border-radius: 6px 6px 0 0;
+            transition: background 0.3s ease;
+        }
+        .solution-header:hover {
+            background: #b8dcc0;
+        }
+        .solution-content {
+            padding: 15px;
+            display: none;
+        }
+        .solution-content.expanded {
+            display: block;
+        }
+        .solution-toggle {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .solution-toggle.expanded {
+            transform: rotate(90deg);
+        }
+        pre { 
+            background: #1e1e1e; 
+            color: #d4d4d4; 
+            padding: 20px; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            margin: 15px 0; 
+        }
+        .key-concept { 
+            background: #d1ecf1; 
+            border-left: 4px solid #bee5eb; 
+            padding: 15px; 
+            margin: 15px 0; 
+        }
+        .toc { 
+            background: #e9ecef; 
+            padding: 20px; 
+            border-radius: 6px; 
+            margin: 20px 0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Building a Portfolio Project Page: Interactive Web Development Tutorial</h1>
+        
+        <div class="key-concept">
+            <strong>What You'll Build:</strong> A dynamic project detail page that showcases your technical art work with interactive features, responsive design, and password protection. This builds on your existing portfolio structure and demonstrates advanced web development skills.
+        </div>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#challenge1">Lesson 1: Project Page Structure & Semantic HTML</a></li>
+                <li><a href="#challenge2">Lesson 2: Interactive Media Gallery Systems</a></li>
+                <li><a href="#challenge3">Lesson 3: Technical Documentation & Code Presentation</a></li>
+                <li><a href="#challenge4">Lesson 4: Responsive Design & Mobile-First Development</a></li>
+                <li><a href="#challenge5">Lesson 5: Client-Side Security & Password Protection</a></li>
+                <li><a href="#integration">Integration & Deployment</a></li>
+            </ul>
+        </div>
+
+        <h2 id="challenge1">Lesson 1: Project Page Structure & Semantic HTML</h2>
+        
+        <h3>Understanding Project Page Architecture</h3>
+        <p>When creating individual project pages, you need to think about the user's journey and information hierarchy. A project page serves multiple purposes:</p>
+        
+        <div class="key-concept">
+            <strong>Project Page Goals:</strong>
+            <ul>
+                <li><strong>Showcase Work:</strong> Display your project visually with high-quality images/videos</li>
+                <li><strong>Explain Process:</strong> Detail your technical approach and problem-solving</li>
+                <li><strong>Demonstrate Skills:</strong> Show code, tools, and methodologies used</li>
+                <li><strong>Provide Context:</strong> Explain the project's purpose and constraints</li>
+                <li><strong>Enable Navigation:</strong> Clear paths back to portfolio and between projects</li>
+            </ul>
+        </div>
+
+        <h3>HTML5 Semantic Structure</h3>
+        <p>Modern HTML5 provides semantic elements that describe content meaning, not just appearance. This helps with SEO, accessibility, and code maintainability:</p>
+
+        <pre><code>&lt;!-- Semantic elements describe content purpose --&gt;
+&lt;header&gt;    &lt;!-- Page header with navigation --&gt;
+&lt;main&gt;      &lt;!-- Primary content area --&gt;
+  &lt;article&gt; &lt;!-- Self-contained content (the project) --&gt;
+    &lt;header&gt; &lt;!-- Project title and meta info --&gt;
+    &lt;section&gt;&lt;!-- Project overview --&gt;
+    &lt;section&gt;&lt;!-- Technical details --&gt;
+    &lt;section&gt;&lt;!-- Media gallery --&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;aside&gt;     &lt;!-- Related projects or sidebar info --&gt;
+&lt;footer&gt;    &lt;!-- Page footer --&gt;</code></pre>
+
+        <h3>Information Architecture Principles</h3>
+        <div class="key-concept">
+            <strong>Organizing Project Information:</strong>
+            <ul>
+                <li><strong>F-Pattern Reading:</strong> Users scan left-to-right, then down - place key info accordingly</li>
+                <li><strong>Progressive Disclosure:</strong> Start with overview, then dive into details</li>
+                <li><strong>Consistent Navigation:</strong> Clear breadcrumbs and "back to portfolio" links</li>
+                <li><strong>Mobile-First:</strong> Design for small screens first, then enhance for desktop</li>
+            </ul>
+        </div>
+
+        <h3>Content Strategy for Technical Art</h3>
+        <p>Technical art projects require balancing technical depth with visual appeal:</p>
+
+        <pre><code><!-- Structure for technical art projects -->
+&lt;section class="project-hero"&gt;
+    &lt;h1&gt;Project Title&lt;/h1&gt;
+    &lt;p class="project-subtitle"&gt;Brief, compelling description&lt;/p&gt;
+    &lt;div class="project-meta"&gt;
+        &lt;span class="project-type"&gt;Category (Shader, Tool, VFX)&lt;/span&gt;
+        &lt;span class="project-tools"&gt;Tools Used&lt;/span&gt;
+        &lt;span class="project-date"&gt;Completion Date&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="project-overview"&gt;
+    &lt;h2&gt;Project Overview&lt;/h2&gt;
+    &lt;p&gt;Problem statement and solution approach&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section class="project-technical"&gt;
+    &lt;h2&gt;Technical Implementation&lt;/h2&gt;
+    &lt;!-- Code snippets, algorithms, technical details --&gt;
+&lt;/section&gt;</code></pre>
+
+        <div class="challenge">
+            <strong>🤔 Challenge 1: Apply Your Knowledge</strong><br>
+            Now that you understand semantic HTML and project page architecture, how would you:
+            <ul>
+                <li>Create a new HTML file that matches your site's design consistency?</li>
+                <li>Structure the content to show project details, images, and technical information using semantic HTML?</li>
+                <li>Implement navigation that helps users understand where they are and how to get back?</li>
+                <li>Organize information in a way that serves both technical and non-technical visitors?</li>
+            </ul>
+            Think about what sections a project page should have and how they should be organized semantically.
+        </div>
+
+        <div class="solution">
+            <div class="solution-header" onclick="toggleSolution(this)">
+                <strong>💡 Solution</strong>
+                <span class="solution-toggle">▶</span>
+            </div>
+            <div class="solution-content">
+                Create a new file called `project-detail.html` with semantic HTML structure that includes:
+                <ul>
+                    <li>Header with navigation back to portfolio</li>
+                    <li>Hero section with project title and key image</li>
+                    <li>Project overview section</li>
+                    <li>Technical details section</li>
+                    <li>Media gallery section</li>
+                    <li>Next/previous project navigation</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>HTML Structure Implementation</h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Stylized Water Shader - David Reynolds&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class="navbar"&gt;
+        &lt;div class="nav-container"&gt;
+            &lt;div class="nav-logo"&gt;
+                &lt;a href="index.html"&gt;← Back to Portfolio&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="nav-breadcrumb"&gt;
+                &lt;span&gt;Projects / Stylized Water Shader&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;main class="project-detail"&gt;
+        &lt;section class="project-hero"&gt;
+            &lt;div class="container"&gt;
+                &lt;h1&gt;Stylized Water Shader&lt;/h1&gt;
+                &lt;p class="project-subtitle"&gt;Real-time stylized water rendering with foam and caustics&lt;/p&gt;
+                &lt;div class="project-meta"&gt;
+                    &lt;span class="project-type"&gt;Shader Development&lt;/span&gt;
+                    &lt;span class="project-tools"&gt;HLSL, Unity, Shader Graph&lt;/span&gt;
+                    &lt;span class="project-date"&gt;2023&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class="project-content"&gt;
+            &lt;div class="container"&gt;
+                &lt;div class="project-layout"&gt;
+                    &lt;div class="project-main"&gt;
+                        &lt;div class="project-gallery"&gt;
+                            &lt;div class="gallery-main"&gt;
+                                &lt;img src="assets/projects/water-shader/main.jpg" alt="Stylized Water Shader"&gt;
+                            &lt;/div&gt;
+                            &lt;div class="gallery-thumbnails"&gt;
+                                &lt;!-- Thumbnail images --&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div class="project-description"&gt;
+                            &lt;h2&gt;Project Overview&lt;/h2&gt;
+                            &lt;p&gt;A stylized water shader designed for fantasy environments...&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="project-sidebar"&gt;
+                        &lt;div class="project-specs"&gt;
+                            &lt;h3&gt;Technical Details&lt;/h3&gt;
+                            &lt;ul class="specs-list"&gt;
+                                &lt;li&gt;&lt;strong&gt;Engine:&lt;/strong&gt; Unity 2022.3 LTS&lt;/li&gt;
+                                &lt;li&gt;&lt;strong&gt;Language:&lt;/strong&gt; HLSL&lt;/li&gt;
+                                &lt;li&gt;&lt;strong&gt;Features:&lt;/strong&gt; Foam, Caustics, Waves&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h2 id="challenge2">Lesson 2: Interactive Media Gallery Systems</h2>
+        
+        <h3>Understanding Media Gallery Patterns</h3>
+        <p>Media galleries are essential for showcasing visual work, but they present unique UX challenges. Users expect intuitive navigation, fast loading, and accessibility across devices.</p>
+
+        <div class="key-concept">
+            <strong>Gallery Design Principles:</strong>
+            <ul>
+                <li><strong>Thumbnail Overview:</strong> Show all media at a glance for quick selection</li>
+                <li><strong>Full-Size Viewing:</strong> Provide immersive viewing without page navigation</li>
+                <li><strong>Progressive Loading:</strong> Load thumbnails first, full-size on demand</li>
+                <li><strong>Keyboard Navigation:</strong> Arrow keys, escape, and tab support</li>
+                <li><strong>Mobile-Friendly:</strong> Touch gestures and responsive sizing</li>
+            </ul>
+        </div>
+
+        <h3>CSS Grid for Responsive Layouts</h3>
+        <p>CSS Grid provides powerful tools for creating responsive gallery layouts that adapt to different screen sizes:</p>
+
+        <pre><code>/* Auto-fit creates responsive columns */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+/* Auto-fill vs Auto-fit */
+grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+/* ^ Creates empty columns to fill space */
+
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+/* ^ Expands existing columns to fill space */
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}</code></pre>
+
+        <h3>Modal Design Patterns</h3>
+        <p>Modals provide full-screen viewing without navigating away from the page. Key considerations:</p>
+
+        <div class="key-concept">
+            <strong>Modal Best Practices:</strong>
+            <ul>
+                <li><strong>Overlay Background:</strong> Semi-transparent backdrop focuses attention</li>
+                <li><strong>Escape Routes:</strong> Multiple ways to close (X button, escape key, click outside)</li>
+                <li><strong>Focus Management:</strong> Trap focus within modal for accessibility</li>
+                <li><strong>Body Scroll Lock:</strong> Prevent background scrolling when modal is open</li>
+            </ul>
+        </div>
+
+        <h3>JavaScript Event Handling</h3>
+        <p>Interactive galleries require event listeners for clicks, keyboard navigation, and touch gestures:</p>
+
+        <pre><code>// Event delegation for dynamic content
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.gallery-thumbnail')) {
+        openModal(e.target.dataset.fullImage);
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (modalOpen) {
+        switch(e.key) {
+            case 'Escape':
+                closeModal();
+                break;
+            case 'ArrowLeft':
+                previousImage();
+                break;
+            case 'ArrowRight':
+                nextImage();
+                break;
+        }
+    }
+});</code></pre>
+
+        <h3>Accessibility Considerations</h3>
+        <p>Galleries must be accessible to users with disabilities:</p>
+
+        <pre><code>&lt;!-- Semantic markup for screen readers --&gt;
+&lt;div class="gallery" role="region" aria-label="Project image gallery"&gt;
+    &lt;button class="gallery-thumbnail" 
+            aria-label="View full size image: Water shader demonstration"&gt;
+        &lt;img src="thumb.jpg" alt="Water shader with foam effects"&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal with proper focus management --&gt;
+&lt;div class="modal" role="dialog" aria-modal="true"&gt;
+    &lt;button class="modal-close" aria-label="Close gallery"&gt;×&lt;/button&gt;
+    &lt;img src="full.jpg" alt="Full size water shader demonstration"&gt;
+&lt;/div&gt;</code></pre>
+
+        <div class="challenge">
+            <strong>🤔 Challenge 2: Apply Your Knowledge</strong><br>
+            Now that you understand gallery systems, CSS Grid, and accessibility principles, how would you:
+            <ul>
+                <li>Create a responsive thumbnail grid that works on all screen sizes?</li>
+                <li>Implement a modal system for full-size viewing with proper focus management?</li>
+                <li>Add keyboard navigation support (arrow keys, escape) for power users?</li>
+                <li>Handle different media types (images, videos, GIFs) within the same gallery?</li>
+                <li>Ensure the gallery is accessible to users with screen readers?</li>
+            </ul>
+            Think about the complete user experience from thumbnail browsing to full-size viewing.
+        </div>
+
+        <div class="solution">
+            <div class="solution-header" onclick="toggleSolution(this)">
+                <strong>💡 Solution</strong>
+                <span class="solution-toggle">▶</span>
+            </div>
+            <div class="solution-content">
+                Build a modal-based gallery system using:
+                <ul>
+                    <li>CSS Grid for responsive thumbnail layout</li>
+                    <li>JavaScript to handle modal opening/closing</li>
+                    <li>Keyboard navigation support</li>
+                    <li>Support for different media types (images, videos, GIFs)</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>CSS Gallery Styling</h3>
+        <pre><code>/* Gallery Grid Layout */
+.gallery-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery-thumb {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-thumb:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Styles */
+.gallery-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.modal-prev { left: 20px; }
+.modal-next { right: 20px; }</code></pre>
+
+        <h3>JavaScript Gallery Functionality</h3>
+        <pre><code>class ProjectGallery {
+    constructor() {
+        this.currentIndex = 0;
+        this.mediaItems = [];
+        this.init();
+    }
+
+    init() {
+        this.setupGallery();
+        this.setupModal();
+        this.setupKeyboardNavigation();
+    }
+
+    setupGallery() {
+        const thumbnails = document.querySelectorAll('.gallery-thumb');
+        this.mediaItems = Array.from(thumbnails).map(thumb => ({
+            src: thumb.dataset.fullSrc,
+            alt: thumb.alt,
+            type: thumb.dataset.type || 'image'
+        }));
+
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => this.openModal(index));
+        });
+    }
+
+    openModal(index) {
+        this.currentIndex = index;
+        const modal = document.querySelector('.gallery-modal');
+        const content = modal.querySelector('.modal-content');
+        
+        this.loadMedia(content, this.mediaItems[index]);
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    loadMedia(container, item) {
+        if (item.type === 'video') {
+            container.innerHTML = `&lt;video controls&gt;
+                &lt;source src="${item.src}" type="video/mp4"&gt;
+            &lt;/video&gt;`;
+        } else {
+            container.innerHTML = `&lt;img src="${item.src}" alt="${item.alt}"&gt;`;
+        }
+    }
+}</code></pre>
+
+        <h2 id="challenge3">Lesson 3: Technical Documentation & Code Presentation</h2>
+        
+        <h3>Presenting Technical Information Effectively</h3>
+        <p>Technical artists work at the intersection of art and technology, so your portfolio must communicate both visual results and technical implementation. This requires careful information design.</p>
+
+        <div class="key-concept">
+            <strong>Technical Documentation Goals:</strong>
+            <ul>
+                <li><strong>Dual Audience:</strong> Appeal to both technical and non-technical viewers</li>
+                <li><strong>Progressive Disclosure:</strong> Show results first, then dive into implementation</li>
+                <li><strong>Visual Hierarchy:</strong> Use typography and spacing to guide reading flow</li>
+                <li><strong>Code Readability:</strong> Syntax highlighting and proper formatting</li>
+                <li><strong>Interactive Elements:</strong> Let users explore technical concepts hands-on</li>
+            </ul>
+        </div>
+
+        <h3>Code Syntax Highlighting</h3>
+        <p>Raw code is hard to read. Syntax highlighting improves readability by using colors to distinguish different code elements:</p>
+
+        <pre><code>/* Without syntax highlighting - harder to read */
+float4 WaterSurface(VertexOutput i) : SV_Target {
+    float2 uv = i.uv;
+    float time = _Time.y;
+    float wave = sin(uv.x * 10 + time * 2) * 0.1;
+    return lerp(_WaterColor, _FoamColor, wave);
+}
+
+/* With syntax highlighting - much more readable */
+&lt;pre&gt;&lt;code class="hlsl"&gt;
+&lt;span class="keyword"&gt;float4&lt;/span&gt; &lt;span class="function"&gt;WaterSurface&lt;/span&gt;(&lt;span class="type"&gt;VertexOutput&lt;/span&gt; i) : &lt;span class="semantic"&gt;SV_Target&lt;/span&gt; {
+    &lt;span class="keyword"&gt;float2&lt;/span&gt; uv = i.uv;
+    &lt;span class="keyword"&gt;float&lt;/span&gt; time = &lt;span class="builtin"&gt;_Time&lt;/span&gt;.y;
+    &lt;span class="keyword"&gt;float&lt;/span&gt; wave = &lt;span class="function"&gt;sin&lt;/span&gt;(uv.x * &lt;span class="number"&gt;10&lt;/span&gt; + time * &lt;span class="number"&gt;2&lt;/span&gt;) * &lt;span class="number"&gt;0.1&lt;/span&gt;;
+    &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="function"&gt;lerp&lt;/span&gt;(&lt;span class="builtin"&gt;_WaterColor&lt;/span&gt;, &lt;span class="builtin"&gt;_FoamColor&lt;/span&gt;, wave);
+}
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+        <h3>Collapsible Technical Sections</h3>
+        <p>Not all visitors want to see implementation details. Collapsible sections let users choose their level of detail:</p>
+
+        <pre><code>/* CSS for collapsible sections */
+.tech-section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.tech-header {
+    padding: 15px;
+    background: #f8f9fa;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tech-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.tech-content.expanded {
+    max-height: 1000px;
+    padding: 15px;
+}</code></pre>
+
+        <h3>Interactive Before/After Comparisons</h3>
+        <p>Visual comparisons help showcase the impact of your technical work:</p>
+
+        <div class="key-concept">
+            <strong>Comparison Techniques:</strong>
+            <ul>
+                <li><strong>Image Sliders:</strong> Drag to reveal before/after states</li>
+                <li><strong>Hover Effects:</strong> Mouse over to see changes</li>
+                <li><strong>Toggle Buttons:</strong> Click to switch between states</li>
+                <li><strong>Side-by-Side:</strong> Static comparison for clear differences</li>
+            </ul>
+        </div>
+
+        <h3>Technical Specifications Layout</h3>
+        <p>Present technical specs in a scannable format:</p>
+
+        <pre><code>&lt;div class="tech-specs"&gt;
+    &lt;h3&gt;Technical Specifications&lt;/h3&gt;
+    &lt;dl class="specs-list"&gt;
+        &lt;dt&gt;Engine&lt;/dt&gt;
+        &lt;dd&gt;Unity 2022.3 LTS&lt;/dd&gt;
+        
+        &lt;dt&gt;Language&lt;/dt&gt;
+        &lt;dd&gt;HLSL/Shader Graph&lt;/dd&gt;
+        
+        &lt;dt&gt;Performance&lt;/dt&gt;
+        &lt;dd&gt;60 FPS @ 1080p on GTX 1060&lt;/dd&gt;
+        
+        &lt;dt&gt;Features&lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Real-time wave simulation&lt;/li&gt;
+                &lt;li&gt;Dynamic foam generation&lt;/li&gt;
+                &lt;li&gt;Caustics projection&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>Copy-to-Clipboard Functionality</h3>
+        <p>Make it easy for other developers to use your code:</p>
+
+        <pre><code>// JavaScript for copy functionality
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('Code copied to clipboard!');
+    }).catch(err => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showToast('Code copied to clipboard!');
+    });
+}
+
+// Usage in HTML
+&lt;div class="code-block"&gt;
+    &lt;div class="code-header"&gt;
+        &lt;span&gt;WaterShader.hlsl&lt;/span&gt;
+        &lt;button onclick="copyToClipboard(this.dataset.code)"&gt;Copy&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;pre&gt;&lt;code&gt;...shader code...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+
+        <div class="challenge">
+            <strong>🤔 Challenge 3: Apply Your Knowledge</strong><br>
+            Now that you understand technical documentation principles, code presentation, and interactive elements, how would you:
+            <ul>
+                <li>Create readable, syntax-highlighted code blocks that showcase your shader/script work?</li>
+                <li>Design collapsible sections that let users choose their technical depth?</li>
+                <li>Implement before/after comparisons to show the impact of your optimizations?</li>
+                <li>Present technical specifications in a scannable, organized format?</li>
+                <li>Add copy-to-clipboard functionality for code sharing?</li>
+                <li>Balance technical depth with visual appeal for different audiences?</li>
+            </ul>
+            Think about how to make complex technical information both accessible and comprehensive.
+        </div>
+
+        <div class="solution">
+            <div class="solution-header" onclick="toggleSolution(this)">
+                <strong>💡 Solution</strong>
+                <span class="solution-toggle">▶</span>
+            </div>
+            <div class="solution-content">
+                Create expandable technical sections with:
+                <ul>
+                    <li>Syntax-highlighted code blocks</li>
+                    <li>Collapsible sections for detailed technical info</li>
+                    <li>Interactive before/after comparisons</li>
+                    <li>Technical specifications in a structured format</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Technical Details Implementation</h3>
+        <pre><code>&lt;div class="technical-section"&gt;
+    &lt;h3&gt;Shader Implementation&lt;/h3&gt;
+    &lt;div class="code-block"&gt;
+        &lt;div class="code-header"&gt;
+            &lt;span&gt;WaterSurface.hlsl&lt;/span&gt;
+            &lt;button class="copy-btn" data-clipboard-target="#water-shader"&gt;Copy&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;pre id="water-shader"&gt;&lt;code class="hlsl"&gt;
+float4 WaterSurface(VertexOutput i) : SV_Target {
+    float2 uv = i.uv;
+    float time = _Time.y;
+    
+    // Wave calculation
+    float wave = sin(uv.x * 10 + time * 2) * 0.1;
+    wave += sin(uv.y * 15 + time * 1.5) * 0.05;
+    
+    // Foam generation
+    float foam = saturate(wave * 5);
+    
+    return lerp(_WaterColor, _FoamColor, foam);
+}
+        &lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <h2 id="challenge4">Lesson 4: Responsive Design & Mobile-First Development</h2>
+        
+        <h3>Understanding Responsive Design Philosophy</h3>
+        <p>Responsive design isn't just about making things smaller—it's about creating optimal experiences across all devices. With mobile traffic often exceeding desktop, mobile-first design is essential.</p>
+
+        <div class="key-concept">
+            <strong>Responsive Design Principles:</strong>
+            <ul>
+                <li><strong>Mobile-First:</strong> Design for small screens first, then enhance for larger screens</li>
+                <li><strong>Flexible Grids:</strong> Use relative units (%, fr, em) instead of fixed pixels</li>
+                <li><strong>Flexible Images:</strong> Images that scale with container size</li>
+                <li><strong>Media Queries:</strong> Apply different styles based on screen characteristics</li>
+                <li><strong>Touch-Friendly:</strong> Larger touch targets and gesture support</li>
+            </ul>
+        </div>
+
+        <h3>CSS Media Queries</h3>
+        <p>Media queries allow you to apply different styles based on device characteristics:</p>
+
+        <pre><code>/* Mobile-first approach */
+/* Base styles for mobile (320px and up) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.code-block {
+    font-size: 12px;
+    overflow-x: auto;
+}
+
+/* Tablet styles (768px and up) */
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    .code-block {
+        font-size: 14px;
+    }
+}
+
+/* Desktop styles (1024px and up) */
+@media (min-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    
+    .code-block {
+        font-size: 16px;
+    }
+}</code></pre>
+
+        <h3>Flexible Grid Systems</h3>
+        <p>CSS Grid and Flexbox provide powerful tools for creating flexible layouts:</p>
+
+        <pre><code>/* Grid auto-fit for responsive columns */
+.portfolio-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Flexbox for flexible navigation */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive sidebar */
+.content-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: single column */
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .content-layout {
+        grid-template-columns: 2fr 1fr; /* Desktop: main + sidebar */
+    }
+}</code></pre>
+
+        <h3>Touch-Friendly Interface Design</h3>
+        <p>Mobile interfaces require consideration for touch interaction:</p>
+
+        <div class="key-concept">
+            <strong>Touch Interface Guidelines:</strong>
+            <ul>
+                <li><strong>Minimum Touch Target:</strong> 44px × 44px for accessibility</li>
+                <li><strong>Adequate Spacing:</strong> 8-10px between touch targets</li>
+                <li><strong>Hover States:</strong> Don't rely on hover for mobile</li>
+                <li><strong>Scroll Performance:</strong> Avoid complex animations during scroll</li>
+            </ul>
+        </div>
+
+        <pre><code>/* Touch-friendly button sizing */
+.gallery-nav-button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px;
+    margin: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Remove hover effects on touch devices */
+@media (hover: none) {
+    .gallery-nav-button:hover {
+        background: initial;
+    }
+}</code></pre>
+
+        <h3>Performance Optimization for Mobile</h3>
+        <p>Mobile devices have limited bandwidth and processing power:</p>
+
+        <pre><code>/* Lazy loading for images */
+.gallery-image {
+    loading: lazy;
+    width: 100%;
+    height: auto;
+}
+
+/* Optimize for mobile with smaller images */
+@media (max-width: 768px) {
+    .hero-image {
+        background-image: url('hero-mobile.jpg');
+    }
+}
+
+@media (min-width: 769px) {
+    .hero-image {
+        background-image: url('hero-desktop.jpg');
+    }
+}</code></pre>
+
+        <h3>Responsive Typography</h3>
+        <p>Typography needs to scale appropriately across devices:</p>
+
+        <pre><code>/* Fluid typography using clamp() */
+.project-title {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1.2;
+}
+
+/* Responsive code blocks */
+.code-block pre {
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    overflow-x: auto;
+    white-space: pre;
+}
+
+/* Readable line lengths */
+.project-description {
+    max-width: 65ch; /* Optimal reading width */
+    margin: 0 auto;
+}</code></pre>
+
+        <h3>Mobile Navigation Patterns</h3>
+        <p>Navigation needs to work well on small screens:</p>
+
+        <pre><code>/* Hamburger menu for mobile */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .nav-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: white;
+        transition: left 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+}</code></pre>
+
+        <div class="challenge">
+            <strong>🤔 Challenge 4: Apply Your Knowledge</strong><br>
+            Now that you understand responsive design principles, mobile-first development, and touch interfaces, how would you:
+            <ul>
+                <li>Implement a mobile-first gallery that works well on touch devices?</li>
+                <li>Create responsive code blocks that remain readable on small screens?</li>
+                <li>Design a layout that adapts smoothly from mobile to desktop?</li>
+                <li>Optimize images and assets for different screen sizes and connection speeds?</li>
+                <li>Handle navigation and interaction patterns across device types?</li>
+                <li>Ensure your technical content is accessible on all devices?</li>
+            </ul>
+            Consider how the user experience changes across different contexts and device capabilities.
+        </div>
+
+        <div class="solution">
+            <div class="solution-header" onclick="toggleSolution(this)">
+                <strong>💡 Solution</strong>
+                <span class="solution-toggle">▶</span>
+            </div>
+            <div class="solution-content">
+                Implement responsive design using:
+                <ul>
+                    <li>CSS Grid with auto-fit for flexible layouts</li>
+                    <li>Media queries for different breakpoints</li>
+                    <li>Touch-friendly navigation for mobile</li>
+                    <li>Lazy loading for images and media</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Responsive CSS</h3>
+        <pre><code>/* Mobile-first approach */
+.project-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .project-layout {
+        grid-template-columns: 2fr 1fr;
+    }
+    
+    .gallery-thumbnails {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .project-layout {
+        grid-template-columns: 3fr 1fr;
+    }
+    
+    .gallery-thumbnails {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* Mobile gallery adjustments */
+@media (max-width: 767px) {
+    .gallery-modal .modal-content {
+        max-width: 95%;
+        max-height: 80%;
+    }
+    
+    .modal-nav {
+        padding: 15px;
+        font-size: 20px;
+    }
+}</code></pre>
+
+        <h2 id="challenge5">Lesson 5: Client-Side Security & Password Protection</h2>
+        
+        <h3>Understanding Static Site Security Limitations</h3>
+        <p>Static sites like GitHub Pages don't have servers to handle authentication, but you can implement client-side protection for basic privacy needs. This isn't military-grade security, but it's sufficient for protecting portfolio work from casual browsing.</p>
+
+        <div class="key-concept">
+            <strong>Client-Side Security Concepts:</strong>
+            <ul>
+                <li><strong>Obfuscation:</strong> Making content difficult to access casually</li>
+                <li><strong>Password Hashing:</strong> Never store plain text passwords</li>
+                <li><strong>Session Management:</strong> Remember authentication during browsing</li>
+                <li><strong>User Experience:</strong> Make legitimate access smooth and clear</li>
+                <li><strong>Graceful Degradation:</strong> Handle failed attempts professionally</li>
+            </ul>
+        </div>
+
+        <h3>Cryptographic Hashing with Web Crypto API</h3>
+        <p>Modern browsers provide secure hashing functions through the Web Crypto API:</p>
+
+        <pre><code>// Generate password hash (do this once, store the result)
+async function generatePasswordHash(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Example usage:
+// const hash = await generatePasswordHash('myClientPassword123');
+// console.log(hash); // Store this hash in your code, not the password
+
+// Verify password against stored hash
+async function verifyPassword(inputPassword, storedHash) {
+    const inputHash = await generatePasswordHash(inputPassword);
+    return inputHash === storedHash;
+}</code></pre>
+
+        <h3>Content Protection Strategies</h3>
+        <p>You can protect content using various obfuscation techniques:</p>
+
+        <pre><code>// Method 1: Hidden content revealed after authentication
+&lt;div id="protected-content" style="display: none;"&gt;
+    &lt;!-- Your confidential project content here --&gt;
+&lt;/div&gt;
+
+// Method 2: Base64 encoded content (basic obfuscation)
+const protectedHTML = atob('PHAxPkNvbmZpZGVudGlhbCBQcm9qZWN0PC9oMT4=');
+
+// Method 3: Dynamically loaded content
+async function loadProtectedContent() {
+    const response = await fetch('protected-content.json');
+    const data = await response.json();
+    return data.content;
+}</code></pre>
+
+        <h3>Session Management</h3>
+        <p>Use browser storage to remember authentication during the session:</p>
+
+        <pre><code>// Session storage (cleared when browser tab closes)
+class SessionAuth {
+    constructor(pageId) {
+        this.pageId = pageId;
+        this.storageKey = `auth_${pageId}`;
+    }
+    
+    setAuthenticated() {
+        sessionStorage.setItem(this.storageKey, 'true');
+        sessionStorage.setItem(`${this.storageKey}_time`, Date.now().toString());
+    }
+    
+    isAuthenticated() {
+        const auth = sessionStorage.getItem(this.storageKey);
+        const authTime = sessionStorage.getItem(`${this.storageKey}_time`);
+        
+        // Optional: Add expiration (e.g., 1 hour)
+        const oneHour = 60 * 60 * 1000;
+        if (authTime && Date.now() - parseInt(authTime) > oneHour) {
+            this.clearAuth();
+            return false;
+        }
+        
+        return auth === 'true';
+    }
+    
+    clearAuth() {
+        sessionStorage.removeItem(this.storageKey);
+        sessionStorage.removeItem(`${this.storageKey}_time`);
+    }
+}</code></pre>
+
+        <h3>User Interface Design</h3>
+        <p>Create a professional, user-friendly authentication interface:</p>
+
+        <div class="key-concept">
+            <strong>UI Design Principles:</strong>
+            <ul>
+                <li><strong>Clear Context:</strong> Explain why authentication is required</li>
+                <li><strong>Professional Appearance:</strong> Match your portfolio's design</li>
+                <li><strong>Error Handling:</strong> Provide helpful feedback for failed attempts</li>
+                <li><strong>Accessibility:</strong> Keyboard navigation and screen reader support</li>
+            </ul>
+        </div>
+
+        <pre><code>&lt;div class="password-overlay"&gt;
+    &lt;div class="password-card"&gt;
+        &lt;div class="password-header"&gt;
+            &lt;h2&gt;🔒 Protected Content&lt;/h2&gt;
+            &lt;p&gt;This project contains confidential client work.&lt;/p&gt;
+        &lt;/div&gt;
+        
+        &lt;form class="password-form" onsubmit="return handlePasswordSubmit(event)"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="password-input"&gt;Enter Password:&lt;/label&gt;
+                &lt;input type="password" 
+                       id="password-input" 
+                       required 
+                       autocomplete="off"
+                       aria-describedby="password-help"&gt;
+                &lt;div id="password-help" class="form-help"&gt;
+                    Contact me if you need access to this project.
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;button type="submit" class="btn-access"&gt;
+                Access Project
+            &lt;/button&gt;
+            
+            &lt;div id="password-error" class="error-message" role="alert"&gt;
+                &lt;!-- Error messages appear here --&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>Error Handling & Rate Limiting</h3>
+        <p>Implement graceful error handling and basic rate limiting:</p>
+
+        <pre><code>class PasswordProtection {
+    constructor() {
+        this.maxAttempts = 5;
+        this.attempts = 0;
+        this.lockoutTime = 15 * 60 * 1000; // 15 minutes
+        this.lastAttempt = 0;
+    }
+    
+    async handlePasswordSubmit(password) {
+        // Check if locked out
+        if (this.isLockedOut()) {
+            this.showError('Too many failed attempts. Please wait 15 minutes.');
+            return false;
+        }
+        
+        // Verify password
+        if (await this.verifyPassword(password)) {
+            this.resetAttempts();
+            this.showSuccess();
+            return true;
+        } else {
+            this.attempts++;
+            this.lastAttempt = Date.now();
+            this.showError(`Incorrect password. ${this.maxAttempts - this.attempts} attempts remaining.`);
+            return false;
+        }
+    }
+    
+    isLockedOut() {
+        if (this.attempts >= this.maxAttempts) {
+            const timeSinceLastAttempt = Date.now() - this.lastAttempt;
+            return timeSinceLastAttempt < this.lockoutTime;
+        }
+        return false;
+    }
+    
+    showError(message) {
+        const errorDiv = document.getElementById('password-error');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+    }
+}</code></pre>
+
+        <h3>Security Best Practices</h3>
+        <div class="key-concept">
+            <strong>Important Security Considerations:</strong>
+            <ul>
+                <li><strong>Not True Security:</strong> Client-side protection can be bypassed by determined users</li>
+                <li><strong>Obfuscation Only:</strong> Use for privacy, not for truly sensitive data</li>
+                <li><strong>HTTPS Required:</strong> Always use HTTPS to prevent password interception</li>
+                <li><strong>Clear Communication:</strong> Let clients know the protection level</li>
+                <li><strong>Backup Plans:</strong> Have proper contracts and NDAs for real security</li>
+            </ul>
+        </div>
+
+        <div class="challenge">
+            <strong>🤔 Challenge 5: Apply Your Knowledge</strong><br>
+            Now that you understand client-side security concepts, hashing, and user experience design, how would you:
+            <ul>
+                <li>Implement password protection using secure hashing techniques?</li>
+                <li>Create a professional authentication interface that matches your portfolio design?</li>
+                <li>Handle failed login attempts gracefully with appropriate error messages?</li>
+                <li>Use session storage to remember authentication during browsing?</li>
+                <li>Implement basic rate limiting to prevent password guessing?</li>
+                <li>Balance security needs with user experience for legitimate clients?</li>
+            </ul>
+            Consider how to make the protection effective for its intended purpose while maintaining a professional presentation.
+        </div>
+
+        <div class="solution">
+            <div class="solution-header" onclick="toggleSolution(this)">
+                <strong>💡 Solution</strong>
+                <span class="solution-toggle">▶</span>
+            </div>
+            <div class="solution-content">
+                Implement client-side password protection using:
+                <ul>
+                    <li>JavaScript to check password hashes</li>
+                    <li>Session storage to remember authentication</li>
+                    <li>Obfuscation techniques for content protection</li>
+                    <li>User-friendly password prompt interface</li>
+                </ul>
+                <strong>Note:</strong> This provides basic protection but is not cryptographically secure.
+            </div>
+        </div>
+
+        <h3>Password Protection Implementation</h3>
+        <pre><code>// Password protection system
+class PasswordProtection {
+    constructor(pageId, correctPasswordHash) {
+        this.pageId = pageId;
+        this.correctPasswordHash = correctPasswordHash;
+        this.isAuthenticated = false;
+        this.init();
+    }
+
+    init() {
+        // Check if already authenticated in this session
+        const sessionAuth = sessionStorage.getItem(`auth_${this.pageId}`);
+        if (sessionAuth === 'true') {
+            this.showContent();
+        } else {
+            this.showPasswordPrompt();
+        }
+    }
+
+    async hashPassword(password) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async checkPassword(inputPassword) {
+        const hashedInput = await this.hashPassword(inputPassword);
+        return hashedInput === this.correctPasswordHash;
+    }
+
+    showPasswordPrompt() {
+        const protectedContent = document.querySelector('.protected-content');
+        protectedContent.innerHTML = `
+            &lt;div class="password-overlay"&gt;
+                &lt;div class="password-prompt"&gt;
+                    &lt;h2&gt;🔒 Protected Content&lt;/h2&gt;
+                    &lt;p&gt;This project contains confidential work. Please enter the password to view.&lt;/p&gt;
+                    &lt;div class="password-form"&gt;
+                        &lt;input type="password" id="password-input" placeholder="Enter password"&gt;
+                        &lt;button onclick="passwordProtection.submitPassword()"&gt;Access&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;div class="password-error" id="password-error"&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+
+        // Add enter key support
+        document.getElementById('password-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.submitPassword();
+            }
+        });
+    }
+
+    async submitPassword() {
+        const input = document.getElementById('password-input');
+        const errorDiv = document.getElementById('password-error');
+        
+        if (await this.checkPassword(input.value)) {
+            sessionStorage.setItem(`auth_${this.pageId}`, 'true');
+            this.showContent();
+        } else {
+            errorDiv.innerHTML = '❌ Incorrect password. Please try again.';
+            input.value = '';
+            input.focus();
+        }
+    }
+
+    showContent() {
+        const protectedContent = document.querySelector('.protected-content');
+        protectedContent.innerHTML = `
+            &lt;div class="project-content"&gt;
+                &lt;!-- Your actual project content here --&gt;
+                &lt;h2&gt;Confidential Project Details&lt;/h2&gt;
+                &lt;p&gt;This is the protected content that requires authentication.&lt;/p&gt;
+                &lt;div class="content-warning"&gt;
+                    ⚠️ This content is confidential. Please do not share or redistribute.
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+}</code></pre>
+
+        <h3>Password Protection CSS</h3>
+        <pre><code>.password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.password-prompt {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.password-form {
+    margin: 20px 0;
+}
+
+.password-form input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.password-form button {
+    width: 100%;
+    padding: 12px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.password-form button:hover {
+    background: #2980b9;
+}
+
+.password-error {
+    color: #e74c3c;
+    margin-top: 10px;
+    min-height: 20px;
+}
+
+.content-warning {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 20px 0;
+    color: #856404;
+}</code></pre>
+
+        <h3>How to Use Password Protection</h3>
+        <pre><code>// In your project HTML file
+&lt;div class="protected-content"&gt;
+    &lt;!-- Content will be replaced by password prompt or actual content --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    // Generate password hash (do this once and store the result)
+    // For password "client123", the hash would be generated like:
+    // const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('client123'));
+    
+    // Initialize password protection
+    const passwordProtection = new PasswordProtection(
+        'project-water-shader', // unique page ID
+        'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3' // SHA-256 hash of your password
+    );
+&lt;/script&gt;</code></pre>
+
+        <h2 id="integration">Integration & Deployment</h2>
+        
+        <div class="challenge">
+            <strong>🤔 How Would You Solve This?</strong><br>
+            Now you need to integrate your new project pages with your existing portfolio. How would you:
+            <ul>
+                <li>Update your portfolio grid to link to these detailed pages?</li>
+                <li>Create a consistent URL structure for projects?</li>
+                <li>Add navigation between projects?</li>
+                <li>Ensure the new pages work with your existing site structure?</li>
+            </ul>
+            Think about the user journey from portfolio to project detail and back.
+        </div>
+
+        <div class="solution">
+            <div class="solution-header" onclick="toggleSolution(this)">
+                <strong>💡 Solution</strong>
+                <span class="solution-toggle">▶</span>
+            </div>
+            <div class="solution-content">
+                <ul>
+                    <li>Create project pages with consistent naming: `project-[name].html`</li>
+                    <li>Update portfolio grid JavaScript to generate links</li>
+                    <li>Add next/previous navigation between projects</li>
+                    <li>Ensure all pages share the same CSS and navigation structure</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Portfolio Integration</h3>
+        <pre><code>// Update your portfolio grid to include project links
+const portfolioData = [
+    {
+        id: 'water-shader',
+        title: 'Stylized Water Shader',
+        description: 'Real-time water with foam and caustics',
+        category: 'shaders',
+        thumbnail: 'assets/projects/water-shader/thumb.jpg',
+        detailPage: 'project-water-shader.html',
+        isProtected: false
+    },
+    {
+        id: 'client-tool',
+        title: 'Client Animation Tool',
+        description: 'Custom pipeline tool for character animation',
+        category: 'tools',
+        thumbnail: 'assets/projects/client-tool/thumb.jpg',
+        detailPage: 'project-client-tool.html',
+        isProtected: true
+    }
+];
+
+// Generate portfolio items with links
+function generatePortfolioItems() {
+    const grid = document.getElementById('portfolioGrid');
+    
+    portfolioData.forEach(project => {
+        const item = document.createElement('div');
+        item.className = `portfolio-item ${project.category}`;
+        
+        item.innerHTML = `
+            &lt;div class="portfolio-card"&gt;
+                &lt;img src="${project.thumbnail}" alt="${project.title}"&gt;
+                &lt;div class="portfolio-info"&gt;
+                    &lt;h3&gt;${project.title}&lt;/h3&gt;
+                    &lt;p&gt;${project.description}&lt;/p&gt;
+                    &lt;div class="portfolio-actions"&gt;
+                        &lt;a href="${project.detailPage}" class="btn btn-primary"&gt;
+                            View Details ${project.isProtected ? '🔒' : ''}
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+        
+        grid.appendChild(item);
+    });
+}</code></pre>
+
+        <h3>Final Deployment Checklist</h3>
+        <div class="key-concept">
+            <strong>✅ Pre-Deployment Checklist:</strong>
+            <ul>
+                <li>Test all project pages on different devices</li>
+                <li>Verify image loading and gallery functionality</li>
+                <li>Test password protection if implemented</li>
+                <li>Check responsive design breakpoints</li>
+                <li>Optimize images for web (WebP format recommended)</li>
+                <li>Validate HTML and CSS</li>
+                <li>Test keyboard navigation and accessibility</li>
+                <li>Update sitemap and meta tags</li>
+            </ul>
+        </div>
+
+        <div class="solution">
+            <div class="solution-header" onclick="toggleSolution(this)">
+                <strong>🎉 Congratulations!</strong>
+                <span class="solution-toggle">▶</span>
+            </div>
+            <div class="solution-content">
+                You've built a comprehensive project detail system that demonstrates advanced web development skills:
+                <ul>
+                    <li><strong>HTML:</strong> Semantic structure with proper navigation and content hierarchy</li>
+                    <li><strong>CSS:</strong> Responsive layouts, interactive galleries, and professional styling</li>
+                    <li><strong>JavaScript:</strong> Interactive features, password protection, and dynamic content</li>
+                    <li><strong>UX Design:</strong> Intuitive navigation, accessibility features, and mobile optimization</li>
+                </ul>
+                
+                This project showcase system not only presents your technical art work professionally but also demonstrates your web development capabilities to potential employers or clients.
+            </div>
+        </div>
+
+        <div class="key-concept">
+            <strong>🚀 Next Steps:</strong>
+            <ul>
+                <li>Create project pages for each item in your portfolio</li>
+                <li>Add more interactive features (3D viewers, before/after sliders)</li>
+                <li>Implement analytics to track which projects get the most views</li>
+                <li>Add social sharing buttons for individual projects</li>
+                <li>Consider implementing a simple blog or news section</li>
+                <li>Explore modern frameworks like React or Vue for more complex interactivity</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function toggleSolution(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.solution-toggle');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                toggle.classList.remove('expanded');
+                toggle.textContent = '▶';
+            } else {
+                content.classList.add('expanded');
+                toggle.classList.add('expanded');
+                toggle.textContent = '▼';
+            }
+        }
+    </script>
+</body>
+</html> 

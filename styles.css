@@ -106,16 +106,41 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%); /* Dark gradient background */
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%); /* Dark gradient background - fallback */
     color: #e5e7eb;
     position: relative;
     padding-top: 80px; /* Space for fixed navbar */
+    overflow: hidden; /* Hide any video overflow */
+}
+
+/* Hero background video */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Behind overlay and content */
+}
+
+/* Hero overlay for text readability */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+    z-index: 2; /* Above video, below content */
 }
 
 /* Hero content container */
 .hero-content {
     max-width: 800px;
     padding: 0 20px;
+    position: relative;
+    z-index: 3; /* Above video and overlay */
 }
 
 /* Main headline */
@@ -192,6 +217,7 @@ body {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 3; /* Above video and overlay */
 }
 
 /* Animated scroll arrow */
@@ -343,6 +369,78 @@ body {
     color: #111827;
 }
 
+/* Password section */
+.password-section {
+    background: #374151;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+    border: 1px solid #4b5563;
+}
+
+.password-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.password-text {
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.password-input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.password-input {
+    flex: 1;
+    padding: 0.75rem;
+    background: #1f2937;
+    border: 1px solid #4b5563;
+    border-radius: 8px;
+    color: #f9fafb;
+    font-size: 1rem;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+.password-btn {
+    padding: 0.75rem 1.5rem;
+    background: #f97316;
+    color: #111827;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.password-btn:hover {
+    background: #ea580c;
+}
+
+.password-hint {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    min-height: 1.2rem;
+}
+
+.password-hint.success {
+    color: #10b981;
+}
+
+.password-hint.error {
+    color: #ef4444;
+}
+
 /* Portfolio grid layout */
 .portfolio-grid {
     display: grid;
@@ -378,6 +476,52 @@ body {
     position: relative;
     border-bottom: 1px solid #374151;
 }
+
+/* Portfolio video thumbnails */
+.portfolio-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-image video:hover {
+    transform: scale(1.05);
+}
+
+/* Play button overlay for portfolio videos */
+.portfolio-image:has(video):not(:hover)::after {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    pointer-events: none;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+/* Fallback for browsers without :has() support */
+.portfolio-image video::after {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    pointer-events: none;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
 
 /* Featured badge */
 .portfolio-badge {
@@ -422,6 +566,13 @@ body {
 /* Project title */
 .portfolio-title {
     font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #f9fafb;
+}
+
+.portfolio-page-title {
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: #f9fafb;

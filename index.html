@@ -42,6 +42,23 @@
 
     <!-- Hero Section - Main landing area -->
     <section id="home" class="hero">
+        <!-- Background Video - Temporarily disabled -->
+        <!-- 
+        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+            <source src="assets/Media/Video/BuggyClip_01.webm" type="video/webm">
+            <fallback message for browsers that don't support video -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="hero-overlay"></div>
+        -->
+        
+        <!-- Temporary placeholder -->
+        <div class="hero-placeholder">
+            <span style="font-size: 4rem;">🚧</span>
+            <p style="margin-top: 1rem; color: #9ca3af; font-size: 1rem;">Background video coming soon</p>
+        </div>
+        
         <div class="hero-content">
             <!-- Main headline with gradient text effect -->
             <h1>Hi, I'm <span class="highlight">David</span></h1>
@@ -111,16 +128,27 @@
     <section id="portfolio" class="portfolio">
         <div class="container">
             <h2>Featured Work</h2>
-            <p class="section-subtitle">Showcase of recent projects demonstrating technical artistry and innovation</p>
             
             <!-- Filter buttons for categorizing projects -->
-            <div class="portfolio-filters">
+            <!-- <div class="portfolio-filters">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="shaders">Shaders</button>
                 <button class="filter-btn" data-filter="tools">Tools</button>
                 <button class="filter-btn" data-filter="vfx">VFX</button>
                 <button class="filter-btn" data-filter="procedural">Procedural</button>
                 <button class="filter-btn" data-filter="pipeline">Pipeline</button>
+            </div> -->
+
+            <!-- Password entry section for protected projects -->
+            <div class="password-section" id="passwordSection">
+                <div class="password-container">
+                    <p class="password-text">Some projects require a password to view.</p>
+                    <div class="password-input-group">
+                        <input type="password" id="portfolioPassword" placeholder="Enter password..." class="password-input">
+                        <button onclick="checkPassword()" class="password-btn">Unlock</button>
+                    </div>
+                    <p class="password-hint" id="passwordHint"></p>
+                </div>
             </div>
 
             <!-- Portfolio grid - Projects will be loaded here by JavaScript -->

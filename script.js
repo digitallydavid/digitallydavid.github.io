@@ -7,14 +7,17 @@
 const projects = [
     {
         id: 1,
-        title: "Procedural Terrain Generator",
-        subtitle: "Houdini-based landscape system",
-        description: "Developed a comprehensive procedural terrain generation system using Houdini, featuring dynamic LOD management and real-time texture blending for open-world environments.",
-        category: "procedural", // Used for filtering
+        title: "Vehicle Anim Tech and Behavior",
+        subtitle: "Advanced vehicle animation system",
+        description: "Developed comprehensive vehicle animation technology and behavior systems for Project Dust, featuring realistic suspension dynamics, procedural damage, and adaptive AI driving behaviors.",
+        category: "tools", // Used for filtering
         year: "2023",
-        technologies: ["Houdini", "Python", "Unreal Engine", "VEX"],
+        technologies: ["C++", "Unreal Engine", "Blueprint", "Animation Blueprints"],
         featured: true, // Shows "Featured" badge
-        image: "🏔️" // Emoji placeholder for project image
+        image: "assets/Media/Video/BuggyClip_01.webm", // Use video as thumbnail
+        projectUrl: "./projects/project-dust/vehicle-anim-tech.html", // URL to project detail page
+        isProtected: true, // Password protected project
+        password: "DigThroughTheDitches" // Simple password protection
     },
     {
         id: 2,
@@ -25,7 +28,8 @@ const projects = [
         year: "2023",
         technologies: ["HLSL", "Unreal Engine", "Substance Designer", "C++"],
         featured: true,
-        image: "🎨"
+        image: "🎨",
+        projectUrl: "projects/shader-library/"
     },
     {
         id: 3,
@@ -36,7 +40,8 @@ const projects = [
         year: "2022",
         technologies: ["Python", "Maya API", "PyQt", "Git"],
         featured: false,
-        image: "🔧"
+        image: "🔧",
+        projectUrl: "projects/animation-tool/"
     },
     {
         id: 4,
@@ -47,7 +52,8 @@ const projects = [
         year: "2022",
         technologies: ["C++", "OpenGL", "GLSL", "CUDA"],
         featured: false,
-        image: "✨"
+        image: "✨",
+        projectUrl: "projects/vfx-system/"
     },
     {
         id: 5,
@@ -58,7 +64,8 @@ const projects = [
         year: "2021",
         technologies: ["Python", "Docker", "AWS", "Jenkins"],
         featured: false,
-        image: "⚙️"
+        image: "⚙️",
+        projectUrl: "projects/pipeline-automation/"
     },
     {
         id: 6,
@@ -69,9 +76,101 @@ const projects = [
         year: "2021",
         technologies: ["HLSL", "Unreal Engine", "Subsurface Scattering", "Normal Maps"],
         featured: false,
-        image: "👤"
+        image: "👤",
+        projectUrl: "projects/character-shader/"
     }
 ];
+
+/* ========================================
+   PASSWORD PROTECTION
+   ======================================== */
+
+// Password protection state
+let isPasswordUnlocked = false;
+
+// Check if password was previously entered this session
+function checkStoredPassword() {
+    const storedPassword = sessionStorage.getItem('portfolioPasswordUnlocked');
+    if (storedPassword === 'true') {
+        isPasswordUnlocked = true;
+        hidePasswordSection();
+    }
+}
+
+// Hide/show password section based on state
+function hidePasswordSection() {
+    const passwordSection = document.getElementById('passwordSection');
+    if (passwordSection) {
+        passwordSection.style.display = 'none';
+    }
+}
+
+function showPasswordSection() {
+    const passwordSection = document.getElementById('passwordSection');
+    if (passwordSection) {
+        passwordSection.style.display = 'block';
+    }
+}
+
+// Password validation function
+function checkPassword() {
+    const passwordInput = document.getElementById('portfolioPassword');
+    const passwordHint = document.getElementById('passwordHint');
+    const enteredPassword = passwordInput.value;
+    
+    // Check if password matches any protected project
+    const validPassword = projects.some(project => 
+        project.isProtected && project.password === enteredPassword
+    );
+    
+    if (validPassword) {
+        isPasswordUnlocked = true;
+        sessionStorage.setItem('portfolioPasswordUnlocked', 'true');
+        passwordHint.textContent = 'Access granted! Protected projects are now visible.';
+        passwordHint.className = 'password-hint success';
+        hidePasswordSection();
+        
+        // Re-render portfolio with protected projects
+        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        renderPortfolio(activeFilter);
+        
+        setTimeout(() => {
+            passwordHint.textContent = '';
+        }, 3000);
+    } else {
+        passwordHint.textContent = 'Incorrect password. Please try again.';
+        passwordHint.className = 'password-hint error';
+        passwordInput.value = '';
+        
+        setTimeout(() => {
+            passwordHint.textContent = '';
+            passwordHint.className = 'password-hint';
+        }, 3000);
+    }
+}
+
+// Allow Enter key to submit password
+function setupPasswordKeyListener() {
+    const passwordInput = document.getElementById('portfolioPassword');
+    if (passwordInput) {
+        passwordInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    }
+}
+
+// Update password section visibility based on protected projects and unlock state
+function updatePasswordSectionVisibility() {
+    const hasProtectedProjects = projects.some(project => project.isProtected);
+    
+    if (hasProtectedProjects && !isPasswordUnlocked) {
+        showPasswordSection();
+    } else {
+        hidePasswordSection();
+    }
+}
 
 /* ========================================
    DOM ELEMENTS
@@ -89,14 +188,23 @@ const navMenu = document.querySelector('.nav-menu'); // Navigation menu
 
 // Wait for the page to fully load before running our JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+    // Check for stored password from session
+    checkStoredPassword();
+    
     // Show all projects initially
     renderPortfolio('all');
     
     // Set up all our interactive features
     setupEventListeners();
     
+    // Set up password input listener
+    setupPasswordKeyListener();
+    
     // Enable smooth scrolling for navigation links
     setupSmoothScrolling();
+    
+    // Show/hide password section based on whether there are protected projects
+    updatePasswordSectionVisibility();
 });
 
 /* ========================================
@@ -168,10 +276,15 @@ function setupSmoothScrolling() {
 
 // Display portfolio projects based on selected filter
 function renderPortfolio(filter) {
-    // Decide which projects to show
-    const filteredProjects = filter === 'all' 
+    // Decide which projects to show based on filter
+    let filteredProjects = filter === 'all' 
         ? projects // Show all projects
         : projects.filter(project => project.category === filter); // Show only projects in selected category
+
+    // Filter out protected projects if password hasn't been unlocked
+    if (!isPasswordUnlocked) {
+        filteredProjects = filteredProjects.filter(project => !project.isProtected);
+    }
 
     // Clear the current portfolio grid
     portfolioGrid.innerHTML = '';
@@ -197,7 +310,14 @@ function createProjectElement(project) {
     projectDiv.innerHTML = `
         <!-- Project image area with emoji placeholder -->
         <div class="portfolio-image">
-            <span>${project.image}</span>
+            ${project.image.includes('.webm') || project.image.includes('.mp4') ? 
+                `<video muted loop playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
+                    <source src="${project.image}" type="video/webm">
+                </video>` :
+                project.image.length <= 2 && !/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(project.image) ? 
+                    `<span>${project.image}</span>` :
+                    `<img src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;">`
+            }
             ${project.featured ? '<span class="portfolio-badge">Featured</span>' : ''}
         </div>
         
@@ -223,10 +343,47 @@ function createProjectElement(project) {
             </div>
             
             <!-- Link to view more details -->
-            <a href="#" class="portfolio-link">View Details →</a>
+            <a href="${project.projectUrl || '#'}" class="portfolio-link" onclick="console.log('Navigating to:', '${project.projectUrl || '#'}')">View Details →</a>
         </div>
     `;
 
+    // Add hover functionality to video thumbnails
+    const video = projectDiv.querySelector('video');
+    if (video) {
+        // Set thumbnail frame (2 seconds into video)
+        const thumbnailTime = 2;
+        
+        // Set initial thumbnail frame when video loads
+        video.addEventListener('loadeddata', function() {
+            video.currentTime = thumbnailTime;
+        });
+        
+        // Play from beginning on hover
+        video.addEventListener('mouseenter', function() {
+            video.currentTime = 0;
+            video.play().catch(function(error) {
+                console.log('Portfolio video play failed:', error);
+            });
+        });
+        
+        // Return to thumbnail frame on mouse leave
+        video.addEventListener('mouseleave', function() {
+            video.pause();
+            video.currentTime = thumbnailTime;
+        });
+        
+        // Handle mobile touch events
+        video.addEventListener('touchstart', function() {
+            if (video.paused) {
+                video.currentTime = 0;
+                video.play();
+            } else {
+                video.pause();
+                video.currentTime = thumbnailTime;
+            }
+        });
+    }
+    
     return projectDiv;
 }
 
@@ -280,4 +437,7 @@ const mobileNavStyles = `
 // Add the mobile navigation styles to the page
 const styleSheet = document.createElement("style");
 styleSheet.textContent = mobileNavStyles;
-document.head.appendChild(styleSheet); 
+document.head.appendChild(styleSheet);
+
+// Make checkPassword function globally accessible
+window.checkPassword = checkPassword; 
