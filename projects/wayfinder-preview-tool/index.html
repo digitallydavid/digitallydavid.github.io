@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayfinder Preview Tool - David Reynolds</title>
+    <meta name="description" content="An in-editor character and cosmetics preview pipeline built for Wayfinder to get clean, consistent renders without loading the full game level">
+
+    <!-- Link to main site styles -->
+    <link rel="stylesheet" href="../../styles.css">
+
+    <!-- Link to project-specific styles -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html">David Reynolds</a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="../../index.html#home">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+                <li><a href="../../assets/resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <h1>Wayfinder Preview Tool</h1>
+            <p class="project-hero-subheader">An in-editor character and cosmetics preview pipeline built to get clean, consistent renders without ever opening the full game level.</p>
+        </div>
+    </section>
+
+    <!-- Main Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <!-- Project Overview -->
+            <div class="project-section">
+                <h2>Project Overview</h2>
+                <div class="two-column">
+                    <div>
+                        <p>Wayfinder shipped with dozens of playable characters and a constantly growing wardrobe of cosmetics, each with their own dye variants. Getting a clean, consistent shot of any of them (for marketing, for the in-game store, or just to sanity-check how a piece looked on a character it wasn't originally designed for) meant loading the full game level, finding the character, and fighting lighting and camera setup every single time.</p>
+                    </div>
+                    <div>
+                        <p>I built the Preview Tool to cut all of that out. It's an Editor Utility Widget backed by a C++ core that spins up a dedicated, pre-lit preview scene, loads any character with any equipment combination and dye swatch applied, and drives the pose through a Sequencer track, all from a single panel inside the editor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="project-section">
+                <h2>Technical Implementation</h2>
+
+                <h3>Multi-Mesh Equipment Loading</h3>
+                <p>Characters in Wayfinder aren't a single skeletal mesh: a fully-equipped character can be stacked out of several meshes across body, armor, and weapon slots. Early versions of the tool only handled one mesh at a time; I rebuilt the loading path to resolve and attach an arbitrary number of skeletal meshes per character so a full loadout previews correctly in one pass.</p>
+
+                <h3>Dye Swatches &amp; Duplication</h3>
+                <p>Cosmetics support dye variants, so the tool reads from a dye swatch table to preview any color variant on demand instead of needing a separate asset per dye. I later added duplication support so an artist could clone an existing preview setup (camera, pose, and lighting included) as a starting point for a new character or cosmetic, rather than rebuilding the scene from scratch each time.</p>
+
+                <h3>Pose &amp; Sequence Driven Renders</h3>
+                <p>The preview scene is driven by a Sequencer track, so poses and camera moves are reusable and consistent across every character run through the tool, which is what makes the output usable as store and marketing imagery rather than just an editor screenshot.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 David Reynolds. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Shared password-gate crypto helpers, then main site JavaScript for mobile menu -->
+    <script src="../../crypto-gate.js"></script>
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Project - David Reynolds</title>
+    <meta name="description" content="This project page covers unannounced work and is password protected.">
+
+    <!-- Link to main site styles -->
+    <link rel="stylesheet" href="../../styles.css">
+
+    <!-- Link to project-specific styles -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html">David Reynolds</a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="../../index.html#home">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+                <li><a href="../../assets/resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <h1 id="pageHeroH1">Protected Project</h1>
+            <p class="project-hero-subheader" id="pageHeroSubheader">This page covers unannounced work and requires a password to view.</p>
+        </div>
+    </section>
+
+    <!-- Main Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <!-- Password gate, shown until the correct password decrypts the real content below -->
+            <div class="project-section password-section" id="pageGate">
+                <div class="password-container">
+                    <p class="password-text">This project requires a password to view.</p>
+                    <div class="password-input-group">
+                        <input type="password" id="pageGatePassword" placeholder="Enter password..." class="password-input">
+                        <button type="button" id="pageGateBtn" class="password-btn">Unlock</button>
+                    </div>
+                    <p class="password-hint" id="pageGateHint"></p>
+                </div>
+            </div>
+
+            <!-- Real content is injected here after decryption -->
+            <div id="pageContent" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 David Reynolds. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Encrypted page payload (see ../protected-page.js) -->
+    <script>
+        window.GATE_PAGE_PAYLOAD = {"salt":"KNNnlIaapi9x8qay5sEHCQ==","iv":"2T89vLskDGebiM2f","ciphertext":"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"};
+    </script>
+
+    <!-- Shared crypto helpers, then site script, then this page's unlock logic -->
+    <script src="../../crypto-gate.js"></script>
+    <script src="../../script.js"></script>
+    <script src="../protected-page.js"></script>
+</body>
+</html>

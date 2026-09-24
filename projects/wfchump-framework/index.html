@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WFChump: Ambient NPC Framework - David Reynolds</title>
+    <meta name="description" content="The data-driven personality framework behind Wayfinder's ambient NPCs, plus a custom in-editor tool for staging and previewing them">
+
+    <!-- Link to main site styles -->
+    <link rel="stylesheet" href="../../styles.css">
+
+    <!-- Link to project-specific styles -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../index.html">David Reynolds</a>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="../../index.html#home">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+                <li><a href="../../assets/resume.pdf" target="_blank">Resume</a></li>
+            </ul>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <h1>WFChump: Ambient NPC Framework</h1>
+            <p class="project-hero-subheader">The data-driven personality system behind Wayfinder's ambient NPCs, plus the in-editor tool built to stage and preview them.</p>
+        </div>
+    </section>
+
+    <!-- Main Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <!-- Project Overview -->
+            <div class="project-section">
+                <h2>Project Overview</h2>
+                <div class="two-column">
+                    <div>
+                        <p>WFChump started as a small prototype: a base class for ambient, non-quest NPCs with just enough logic to stand around and look alive. I took that scaffold and built it out into the framework actually used across dozens of named NPCs in the game: reading "personality" data from soft-referenced data tables so each NPC's fidgets, greeting animations, and dialogue hookups are authored as data rather than one-off Blueprint logic per character.</p>
+                    </div>
+                    <div>
+                        <p>Because the system is data-driven, adding a new ambient NPC personality is a data table entry and an animation set, not a new code path. On top of the runtime framework, I also built a dedicated in-editor tool, the NPC Drafter, that lets us stage and pose an NPC in an isolated preview scene without loading the full game level, which made iterating on new personalities and fidget sets dramatically faster.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="project-section">
+                <h2>Technical Implementation</h2>
+
+                <h3>Data-Driven Personalities</h3>
+                <p>Each NPC's behavior is described by an entry in a personality data table, which the base Chump class reads to decide which fidget montages to play, how to greet the player, and which dialogue hooks to fire. Later passes added montage fade in/out driven straight from the same table, so personality polish didn't require touching code.</p>
+
+                <h3>NPC Drafter Tool</h3>
+                <p>Previewing an NPC used to mean loading it into a real level. I built a custom Unreal Editor tool (its own asset editor, viewport, and Slate-based widget UI) that stages an NPC on a dedicated preview actor using the engine's preview scene, so writers and animators could iterate on a personality in isolation. That included a small modification to the engine's own preview scene class to support the staging workflow the tool needed.</p>
+
+                <h3>Scope Note</h3>
+                <p>The base Chump class was originally scaffolded by a teammate as a simple puppet system. Nearly everything the shipped framework actually does (the personality data-table system, fidget/greeting/dialogue hookups, and the NPC Drafter tool) was built on top of that starting point across about a year of iteration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 David Reynolds. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Shared password-gate crypto helpers, then main site JavaScript for mobile menu -->
+    <script src="../../crypto-gate.js"></script>
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -16,8 +16,7 @@ const projects = [
         featured: true, // Shows "Featured" badge
         image: "assets/Media/Video/BuggyClip_01.webm", // Use video as thumbnail
         projectUrl: "./projects/project-dust/vehicle-anim-tech.html", // URL to project detail page
-        isProtected: true, // Password protected project
-        password: "DigThroughTheDitches" // Simple password protection
+        isProtected: true // Password protected project (see GATE_CANARY below)
     },
     {
         id: 2,
@@ -78,6 +77,69 @@ const projects = [
         featured: false,
         image: "👤",
         projectUrl: "projects/character-shader/"
+    },
+    {
+        id: 7,
+        title: "PerfBot",
+        subtitle: "AI-assisted performance profiling bot",
+        description: "Built a Python toolchain that captures Unreal Insights traces from CI runs, automatically analyzes them, and reports results to Slack with AI-generated interpretation of hitches and frame-time regressions, turning profiling from a manual chore into a standing part of the pipeline.",
+        category: "pipeline",
+        year: "2025",
+        technologies: ["Python", "Unreal Insights", "TeamCity", "Slack API", "Claude API"],
+        featured: true,
+        image: "🤖",
+        projectUrl: "projects/perfbot/index.html",
+        isProtected: true
+    },
+    {
+        id: 8,
+        title: "Wayfinder Preview Tool",
+        subtitle: "In-editor cosmetic & character preview tool",
+        description: "Built an Editor Utility Widget tool for Wayfinder that lets artists load any character or cosmetic loadout (including dye variants and multi-mesh equipment) into a lit preview scene, pose it with Sequencer, and pull clean marketing-quality renders without touching the full game level.",
+        category: "tools",
+        year: "2023",
+        technologies: ["C++", "Unreal Engine", "Editor Utility Widget", "Sequencer"],
+        featured: false,
+        image: "📸",
+        projectUrl: "projects/wayfinder-preview-tool/index.html"
+    },
+    {
+        id: 9,
+        title: "Breakables & Destruction System",
+        subtitle: "Chaos-fracture destructible framework",
+        description: "Designed a reusable breakable-object framework for Project Dust combining Chaos fracture geometry, hand-tuned VFX, and Nanite-enabled collision meshes, then consolidated three divergent prototype variants into a single master Blueprint to keep the system easy for other designers to drop into a level.",
+        category: "vfx",
+        year: "2024",
+        technologies: ["Unreal Engine", "Chaos Destruction", "Niagara", "Nanite", "Blueprint"],
+        featured: false,
+        image: "💥",
+        projectUrl: "projects/breakables-system/index.html",
+        isProtected: true
+    },
+    {
+        id: 10,
+        title: "Animation Instance & Combat Layer Architecture",
+        subtitle: "Core animation state framework for Project Dust",
+        description: "Architected the C++ animation instance hierarchy underpinning every character in Project Dust (player, AI, and shared) along with supporting systems for root-motion switching, landing recovery, and montage injection that let combat and traversal abilities layer clean animation on top of shared logic instead of each rebuilding it.",
+        category: "tools",
+        year: "2024",
+        technologies: ["C++", "Unreal Engine", "Animation Blueprint", "Gameplay Ability System"],
+        featured: false,
+        image: "🦴",
+        projectUrl: "projects/animation-architecture/index.html",
+        isProtected: true
+    },
+    {
+        id: 11,
+        title: "WFChump Ambient NPC Framework",
+        subtitle: "Data-driven personality system for Wayfinder's NPCs",
+        description: "Took an early ambient-NPC prototype and built it out into the data-driven personality framework used across dozens of Wayfinder's NPCs: fidgets, greetings, dialogue hookups, and montage blending all read from data tables, plus a custom in-editor NPC Drafter tool for staging and previewing them without loading a full level.",
+        category: "procedural",
+        year: "2023",
+        technologies: ["C++", "Data Tables", "Slate (Unreal Editor Tools)", "Blueprint"],
+        featured: false,
+        image: "🎭",
+        projectUrl: "projects/wfchump-framework/index.html"
     }
 ];
 
@@ -85,13 +147,27 @@ const projects = [
    PASSWORD PROTECTION
    ======================================== */
 
+// Encrypted canary blob used only to verify a password is correct, via
+// gateDecrypt() (see crypto-gate.js). No password is stored anywhere, in
+// this file or in the projects array; a wrong password simply fails to
+// decrypt this blob instead of matching against a stored plaintext value.
+const GATE_CANARY = {"salt":"XlJUKFDf8qWgFlzHktGixw==","iv":"01MOtDayz25ojpRH","ciphertext":"SvlrTtT5ptIg7AhtZi8W60N4"};
+const GATE_SESSION_KEY = 'portfolioGatePassword';
+
 // Password protection state
 let isPasswordUnlocked = false;
 
-// Check if password was previously entered this session
-function checkStoredPassword() {
-    const storedPassword = sessionStorage.getItem('portfolioPasswordUnlocked');
-    if (storedPassword === 'true') {
+// Verifies a password against the canary blob without ever comparing it to
+// a stored plaintext value. Returns true/false.
+async function verifyGatePassword(password) {
+    const decrypted = await gateDecrypt(password, GATE_CANARY);
+    return decrypted === 'OK';
+}
+
+// Check if a password was previously verified this session
+async function checkStoredPassword() {
+    const storedPassword = sessionStorage.getItem(GATE_SESSION_KEY);
+    if (storedPassword && await verifyGatePassword(storedPassword)) {
         isPasswordUnlocked = true;
         hidePasswordSection();
     }
@@ -113,27 +189,24 @@ function showPasswordSection() {
 }
 
 // Password validation function
-function checkPassword() {
+async function checkPassword() {
     const passwordInput = document.getElementById('portfolioPassword');
     const passwordHint = document.getElementById('passwordHint');
     const enteredPassword = passwordInput.value;
-    
-    // Check if password matches any protected project
-    const validPassword = projects.some(project => 
-        project.isProtected && project.password === enteredPassword
-    );
-    
+
+    const validPassword = await verifyGatePassword(enteredPassword);
+
     if (validPassword) {
         isPasswordUnlocked = true;
-        sessionStorage.setItem('portfolioPasswordUnlocked', 'true');
+        sessionStorage.setItem(GATE_SESSION_KEY, enteredPassword);
         passwordHint.textContent = 'Access granted! Protected projects are now visible.';
         passwordHint.className = 'password-hint success';
         hidePasswordSection();
-        
-        // Re-render portfolio with protected projects
-        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-        renderPortfolio(activeFilter);
-        
+
+        // Re-render portfolio with protected projects (filters are currently disabled, so always 'all')
+        const activeFilterBtn = document.querySelector('.filter-btn.active');
+        renderPortfolio(activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all');
+
         setTimeout(() => {
             passwordHint.textContent = '';
         }, 3000);
@@ -141,7 +214,7 @@ function checkPassword() {
         passwordHint.textContent = 'Incorrect password. Please try again.';
         passwordHint.className = 'password-hint error';
         passwordInput.value = '';
-        
+
         setTimeout(() => {
             passwordHint.textContent = '';
             passwordHint.className = 'password-hint';
@@ -187,10 +260,10 @@ const navMenu = document.querySelector('.nav-menu'); // Navigation menu
    ======================================== */
 
 // Wait for the page to fully load before running our JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Check for stored password from session
-    checkStoredPassword();
-    
+document.addEventListener('DOMContentLoaded', async function() {
+    // Check for a previously-verified password from this session
+    await checkStoredPassword();
+
     // Show all projects initially
     renderPortfolio('all');
     
@@ -276,6 +349,11 @@ function setupSmoothScrolling() {
 
 // Display portfolio projects based on selected filter
 function renderPortfolio(filter) {
+    // Pages without a portfolio grid (project detail pages) just skip this
+    if (!portfolioGrid) {
+        return;
+    }
+
     // Decide which projects to show based on filter
     let filteredProjects = filter === 'all' 
         ? projects // Show all projects
