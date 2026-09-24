@@ -22,7 +22,7 @@ export default function Resume() {
             <div className="text-gray-600 dark:text-gray-300 mt-2">951.970.0761<br />digitallydavid@gmail.com</div>
           </div>
           <div className="mt-4 md:mt-0 text-gray-600 dark:text-gray-300 text-right">
-            <div>12712 NE 52nd Cir<br />Vancouver, WA 98682</div>
+            <div>Vancouver, WA</div>
           </div>
         </div>
         {/* Summary */}

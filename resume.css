@@ -1,0 +1,159 @@
+/* ========================================
+   RESUME PAGE
+   ======================================== */
+
+.resume-hero {
+    padding: 140px 0 60px;
+    text-align: center;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border-bottom: 1px solid #374151;
+}
+
+.resume-hero h1 {
+    font-size: 3rem;
+    color: #f9fafb;
+    margin-bottom: 0.5rem;
+}
+
+.resume-role {
+    font-size: 1.3rem;
+    color: #f97316;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.resume-contact {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    color: #d1d5db;
+    margin-bottom: 2rem;
+}
+
+.resume-print-btn {
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.resume-content {
+    padding: 4rem 0;
+    background: #111827;
+}
+
+.resume-section {
+    margin-bottom: 3.5rem;
+}
+
+.resume-section h2 {
+    font-size: 2rem;
+    color: #f9fafb;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f97316;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.resume-skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.resume-skills h3 {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.resume-entry {
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.resume-entry:last-child {
+    margin-bottom: 0;
+}
+
+.resume-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.resume-entry-header h3 {
+    font-size: 1.15rem;
+    color: #f9fafb;
+}
+
+.resume-company {
+    color: #f97316;
+    font-weight: 600;
+}
+
+.resume-dates {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.resume-entry p {
+    color: #d1d5db;
+}
+
+/* Print styles: strip navigation/chrome so the page itself is the PDF */
+@media print {
+    .navbar,
+    .footer,
+    .resume-print-btn,
+    .hamburger {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .resume-hero,
+    .resume-content {
+        background: white;
+        padding-top: 0;
+    }
+
+    .resume-hero h1,
+    .resume-section h2,
+    .resume-entry-header h3 {
+        color: black;
+    }
+
+    .resume-company {
+        color: #b45309;
+    }
+
+    .resume-entry {
+        background: white;
+        border: 1px solid #d1d5db;
+        break-inside: avoid;
+    }
+}
+
+@media (max-width: 768px) {
+    .resume-skills {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-entry-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

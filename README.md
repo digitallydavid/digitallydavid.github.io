@@ -9,8 +9,9 @@ digitallydavid.github.io/
 ├── index.html          # Main homepage (all sections in one file)
 ├── styles.css          # All styling and responsive design
 ├── script.js           # Interactive features (filtering, mobile menu)
+├── resume.html         # Resume page (styled to match the rest of the site)
+├── resume.css          # Resume page styling
 ├── assets/             # Static assets
-│   └── resume.pdf      # Your resume
 ├── nextjs-backup/      # Backup of the original Next.js app
 └── README.md           # This file
 ```
