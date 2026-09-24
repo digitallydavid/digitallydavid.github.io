@@ -8,8 +8,8 @@ const projects = [
     {
         id: 1,
         title: "Vehicle Anim Tech and Behavior",
-        subtitle: "Advanced vehicle animation system",
-        description: "Developed comprehensive vehicle animation technology and behavior systems for Project Dust, featuring realistic suspension dynamics, procedural damage, and adaptive AI driving behaviors.",
+        subtitle: "Control rig and surface-detection system",
+        description: "Prototyped the vehicle animation and control rig system for Project Dust's buggy: procedural wheel IK and multi-point surface detection, built as a shared framework later extended to other vehicle types. A teammate has since taken the vehicle's movement and physics feel to completion in the current build.",
         category: "tools", // Used for filtering
         year: "2023",
         technologies: ["C++", "Unreal Engine", "Blueprint", "Animation Blueprints"],
@@ -17,66 +17,6 @@ const projects = [
         image: "assets/Media/Video/BuggyClip_01.webm", // Use video as thumbnail
         projectUrl: "./projects/project-dust/vehicle-anim-tech.html", // URL to project detail page
         isProtected: true // Password protected project (see GATE_CANARY below)
-    },
-    {
-        id: 2,
-        title: "Shader Library Framework",
-        subtitle: "Modular shader system",
-        description: "Created a comprehensive shader library with 50+ reusable materials, implementing PBR workflows and custom lighting models for stylized and realistic rendering.",
-        category: "shaders",
-        year: "2023",
-        technologies: ["HLSL", "Unreal Engine", "Substance Designer", "C++"],
-        featured: true,
-        image: "🎨",
-        projectUrl: "projects/shader-library/"
-    },
-    {
-        id: 3,
-        title: "Animation Pipeline Tools",
-        subtitle: "Maya automation suite",
-        description: "Built a suite of Python tools for Maya that automated rigging processes, reduced animation setup time by 60%, and improved workflow consistency across the team.",
-        category: "tools",
-        year: "2022",
-        technologies: ["Python", "Maya API", "PyQt", "Git"],
-        featured: false,
-        image: "🔧",
-        projectUrl: "projects/animation-tool/"
-    },
-    {
-        id: 4,
-        title: "VFX Particle System",
-        subtitle: "Real-time particle effects",
-        description: "Designed and implemented a GPU-accelerated particle system for real-time VFX, supporting 10,000+ particles with custom force fields and collision detection.",
-        category: "vfx",
-        year: "2022",
-        technologies: ["C++", "OpenGL", "GLSL", "CUDA"],
-        featured: false,
-        image: "✨",
-        projectUrl: "projects/vfx-system/"
-    },
-    {
-        id: 5,
-        title: "Asset Pipeline Automation",
-        subtitle: "Streamlined workflow system",
-        description: "Developed an automated asset pipeline that reduced processing time by 70%, including texture optimization, LOD generation, and asset validation.",
-        category: "pipeline",
-        year: "2021",
-        technologies: ["Python", "Docker", "AWS", "Jenkins"],
-        featured: false,
-        image: "⚙️",
-        projectUrl: "projects/pipeline-automation/"
-    },
-    {
-        id: 6,
-        title: "Character Shader System",
-        subtitle: "Advanced skin rendering",
-        description: "Implemented a physically-based character shader with subsurface scattering, dynamic wrinkles, and real-time damage visualization for realistic character rendering.",
-        category: "shaders",
-        year: "2021",
-        technologies: ["HLSL", "Unreal Engine", "Subsurface Scattering", "Normal Maps"],
-        featured: false,
-        image: "👤",
-        projectUrl: "projects/character-shader/"
     },
     {
         id: 7,

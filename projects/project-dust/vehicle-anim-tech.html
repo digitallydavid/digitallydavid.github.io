@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Behavior, Technical Animation, and Surface Detection in Project Dust | David Reynolds</title>
-    <meta name="description" content="Advanced vehicle animation technology and behavior systems for Project Dust featuring realistic suspension dynamics and AI driving behaviors">
+    <title>Vehicle Control Rig and Surface Detection in Project Dust | David Reynolds</title>
+    <meta name="description" content="The control rig, wheel IK, and surface-detection systems behind Project Dust's buggy, built as an early prototype and grown into a shared vehicle framework">
     
     <!-- Link to main site styles -->
     <link rel="stylesheet" href="../../styles.css">
@@ -53,8 +53,7 @@
         
         <div class="container">
             <h1>Vehicle Dynamics &<br>Technical Animation</h1>
-            <p class="project-hero-subheader">Advanced vehicle animation technology and behavior systems for 
-                Project Dust featuring realistic suspension dynamics, blah blah blah </p>
+            <p class="project-hero-subheader">The animation and control rig systems behind Project Dust's buggy: procedural wheel IK, multi-point surface detection, and a control rig framework built to extend across other vehicle types.</p>
         </div>
     </section>
 
@@ -66,17 +65,13 @@
                 <h2>Project Overview</h2>
                 <div class="two-column">
                     <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>This started as a personal prototype in March 2025: a simple "arcade style" buggy with its own animation blueprint and control rig, built to answer one question: how do you make a vehicle feel reactive and alive without building a full physics-based vehicle simulation. Over the following weeks it grew from a one-off prototype into a proper shared vehicle framework, split into a generic vehicle base class and vehicle-specific subclasses. That split is part of why an enemy mech in Project Dust could be stood up on the same foundation just a few days later.</p>
                     </div>
                     <div>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <p>Austin Martin picked up the vehicle from there and took its movement and physics feel to where it is in the current build: suspension tuning, pitch and roll, camera behavior, and all the driving feel players actually experience is his work. My own ongoing contribution has stayed on the animation and control rig side: the wheel IK, the multi-point ground detection, and the custom control rig nodes that layer reactive animation on top of whatever movement system is driving underneath.</p>
                     </div>
                 </div>
-                
+
                 <!-- Main Hero Image -->
                 <figure style="text-align: center; margin: 40px 0;">
                     <video class="project-standard-video" muted loop playsinline preload="auto">
@@ -97,14 +92,10 @@
 
                 <div class="two-column">
                     <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Under the hood, the buggy doesn't use a full physics-based vehicle simulation. It's built on a custom subclass of the same character movement component every other character in Project Dust runs on, extended with vehicle-specific behavior. That's Austin's side of the system to own and tune now, but it's also what the animation and control rig layer above it has to work with.</p>
                     </div>
                     <div>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <p>My part of the stack sits on top of that: reading the ground under each wheel and turning it into control rig input, so the vehicle looks like it's responding to the terrain even in places where the movement itself is simpler than that. The three pieces below are what make that work.</p>
                     </div>
                 </div>
 
@@ -122,16 +113,14 @@
 
 
                 
-                <h3>Vehicle Physics & Suspension System</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue, nulla vel tincidunt tincidunt, nulla nunc tincidunt nunc, vel tincidunt nunc nulla vel nunc. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                
-                <h3>Surface Detection Technology</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                
-                <h3>AI Behavior Systems</h3>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                    mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus 
-                    error sit voluptatem accusantium doloremque laudantium.</p>
+                <h3>Custom Control Rig Nodes</h3>
+                <p>The wheel IK relies on a native Control Rig node I wrote in C++: a multi-trace node that can exclude specific actors, like the vehicle itself, from its trace results. Each wheel runs its own trace against the ground through this node, and the results feed directly into the control rig graph that positions and orients the wheels, giving the suspension a responsive, physically-grounded look without it actually being a physics simulation, which is what that earlier caption about it being "technically a cheat" is getting at. This part of the system is still being refined: an experiment adding visible wheel drop when the buggy went airborne shipped and then got pulled back out days later after it proved inconsistent across surfaces, which is normal for this kind of reactive-animation work. You iterate until it reads right everywhere, not just in the cases you tested.</p>
+
+                <h3>Ground Properties & Surface Detection</h3>
+                <p>A dedicated ground properties component reads back what surface each wheel trace is actually hitting, dirt, rock, metal, whatever gameplay tags the level applies, and feeds that into both the animation side and the vehicle's collision handling. The debug view built on top of Cog, our in-engine overlay tool, lets us watch exactly which surface tags a wheel is picking up in real time, which made tuning the traction and correction behavior a lot less like guesswork.</p>
+
+                <h3>A Vehicle Framework, Not a One-Off</h3>
+                <p>Splitting the buggy into a generic vehicle base class and a buggy-specific subclass wasn't just cleanup, it meant the framework could support more than one vehicle archetype. An enemy mech character was built on the same vehicle base within days of that split, reusing the same animation and control rig plumbing instead of starting over from scratch.</p>
 
                     <figure style="text-align: center; margin: 40px 0;">
                         <video class="project-standard-video" muted loop playsinline preload="auto">
